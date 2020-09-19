@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: blue;
 }
 
 main {
@@ -12,5 +13,3 @@ footer.page-footer {
     padding-top: 0;
     text-align: right;
 }
-
-this will not work just writing stuff.
