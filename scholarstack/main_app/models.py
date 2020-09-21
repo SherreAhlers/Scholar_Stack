@@ -1,13 +1,28 @@
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.urls import reverse
+from datetime import date
 from django.db import models
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 # Create your models here.
 
 STATUS = (
     ('S', 'Student'),
     ('T', 'Tutor')
+)
+
+LEVELS = (
+  ('G2', '2nd Grade'),
+  ('G1', '1st Grade'),
+  ('G3', '3rd Grade'),
+  ('G4', '4th Grade'),
+  ('G5', '5th Grade'),
+  ('G6', '6th Grade'),
+  ('G7', '7th Grade'),
+  ('G8', '8th Grade'),
+  ('G9', '9th Grade'),
+  ('G10', '10th Grade') # To be fixed ---
 )
 
 
@@ -18,6 +33,8 @@ class Profile(models.Model):
         choices=STATUS,
         default=STATUS[0][0]
     )
+    # Add Avatar her or in a seperate model????----
+    # avatar = models.ImageField(default)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -31,3 +48,58 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user} is a {self.status}"
+
+
+class Task(models.Model):
+  author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+  title = models.CharField(max_length=100)
+  field = models.CharField(max_length=20)
+  level = models.CharField(
+    max_length=3,
+    choices=LEVELS,
+    default=LEVELS[0][0]
+  )
+  body = models.CharField(max_length=2000)
+  date_created=models.DateTimeField(auto_now_add=True)
+  # doc = ?? How to implement the pictures
+
+  def __str__(self):
+    return f'''
+    Task_id: {self.id},
+    Task Title: {self.title},
+    Author: {self.author},
+    Task Level: {self.get_level_display()},
+    Field: {self.field},
+    Body: {self.body}
+    '''
+
+class Comment(models.Model):
+  author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+  task = models.ForeignKey(Task, on_delete=models.CASCADE)
+  body = models.CharField(max_length=2000)
+  date_created = models.DateTimeField(auto_now_add=True)
+  # doc = ?? How to implement the pictures
+
+  def __str__(self):
+    return f'''
+    comment_id: {self.id},
+    Author: {self.author},
+    In answer to the task_id: {self.task_id},
+    Body: {self.body}
+    '''
+
+class Message(models.Model):
+  sender = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="sender")
+  reciever = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="reciever")
+  body = models.CharField(max_length=2000)
+  date_created = models.DateTimeField(auto_now_add=True)
+  # doc = ?? How to implement the pictures
+
+  def __str__(self):
+    return f'''
+    Message_id: {self.id},
+    Sender: {self.sender},
+    Reciever: {self.reciever},
+    Body: {self.body},
+    Created @: {self.date_created}
+    '''
