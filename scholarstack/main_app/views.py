@@ -7,10 +7,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def user_has_profile(request, profile):
-    print('hitting user.profile', len(profile.status))
+    # print('hitting user.profile', len(profile.status))
     if profile.status:
         print("status is not empty")
-        # return True
+        return True
     else:
         print("status is empty")
         return False
