@@ -103,3 +103,30 @@ class Message(models.Model):
     Body: {self.body},
     Created @: {self.date_created}
     '''
+class Profile_Avatar(models.Model):
+  url = models.CharField(max_length=200)  #  <- need to set default
+  profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"This is the photo for profile_id: {self.profile_id} @{self.url}"
+
+class Task_Doc(models.Model):
+  url = models.CharField(max_length=200)
+  task = models.ForeignKey(Task, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"This is the photo for task_id: {self.task_id} @{self.url}"
+
+class Comment_Doc(models.Model):
+  url = models.CharField(max_length=200)
+  comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"This is the photo for comment_id: {self.comment_id} @{self.url}"
+
+class Message_Doc(models.Model):
+  url = models.CharField(max_length=200)
+  message = models.ForeignKey(Message, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"This is the photo for message_id: {self.message_id} @{self.url}"
