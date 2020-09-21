@@ -3,8 +3,8 @@ from django.dispatch import receiver
 from django.urls import reverse
 from datetime import date
 from django.db import models
-from django.db.models.signals import post_save
 
+from django.db.models.signals import post_save
 # Create your models here.
 
 STATUS = (
