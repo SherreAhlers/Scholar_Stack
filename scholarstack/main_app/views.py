@@ -11,8 +11,21 @@ S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'scholarstack'
 # Create your views here.
 
+def user_has_profile(request, profile):
+    # print('hitting user.profile', len(profile.status))
+    if profile.status:
+        print("status is not empty")
+        return True
+    else:
+        print("status is empty")
+        return False
+
 def home(request):
-    return render(request, 'home.html')
+    # print('hitting home', request.user.profile.status)
+    if user_has_profile(request, request.user.profile) == True:
+        return render(request, 'home.html')
+    else:
+        return render(request, 'create_status.html')
 
 def about(request):
     return render(request, 'about.html')
