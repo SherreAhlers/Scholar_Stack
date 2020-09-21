@@ -13,8 +13,8 @@ STATUS = (
 )
 
 LEVELS = (
-  ('G2', '2nd Grade'),
   ('G1', '1st Grade'),
+  ('G2', '2nd Grade'),
   ('G3', '3rd Grade'),
   ('G4', '4th Grade'),
   ('G5', '5th Grade'),
@@ -22,7 +22,9 @@ LEVELS = (
   ('G7', '7th Grade'),
   ('G8', '8th Grade'),
   ('G9', '9th Grade'),
-  ('G10', '10th Grade') # To be fixed ---
+  ('G10', '10th Grade'),
+  ('G11', '11th Grade'),
+  ('G12', '12th grade'),
 )
 
 
@@ -33,7 +35,7 @@ class Profile(models.Model):
         choices=STATUS,
         default=STATUS[0][0]
     )
-    # Add Avatar her or in a seperate model????----
+    # Add Avatar here or in a seperate model????----
     # avatar = models.ImageField(default)
 
     @receiver(post_save, sender=User)
