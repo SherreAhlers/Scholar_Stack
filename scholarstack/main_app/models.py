@@ -34,7 +34,7 @@ class Profile(models.Model):
         max_length=1,
         choices=STATUS
     )
-    # Add Avatar her or in a seperate model????----
+    # Add Avatar here or in a seperate model????----
     # avatar = models.ImageField(default)
 
     @receiver(post_save, sender=User)

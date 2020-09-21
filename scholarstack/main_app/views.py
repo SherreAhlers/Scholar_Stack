@@ -1,9 +1,14 @@
+import uuid
+import boto3
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from main_app.forms import ProfileCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
+BUCKET = 'scholarstack'
 # Create your views here.
 
 def user_has_profile(request, profile):
