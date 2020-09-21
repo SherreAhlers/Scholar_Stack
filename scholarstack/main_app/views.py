@@ -1,12 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from main_app.forms import ProfileCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
+def user_has_profile(request, profile):
+    print('hitting user.profile', len(profile.status))
+    if profile.status:
+        print("status is not empty")
+        # return True
+    else:
+        print("status is empty")
+        return False
+
 def home(request):
-    return render(request, 'home.html')
+    # print('hitting home', request.user.profile.status)
+    if user_has_profile(request, request.user.profile) == True:
+        return render(request, 'home.html')
+    else:
+        return render(request, 'create_status.html')
 
 def about(request):
     return render(request, 'about.html')

@@ -13,8 +13,8 @@ STATUS = (
 )
 
 LEVELS = (
-  ('G2', '2nd Grade'),
   ('G1', '1st Grade'),
+  ('G2', '2nd Grade'),
   ('G3', '3rd Grade'),
   ('G4', '4th Grade'),
   ('G5', '5th Grade'),
@@ -22,7 +22,9 @@ LEVELS = (
   ('G7', '7th Grade'),
   ('G8', '8th Grade'),
   ('G9', '9th Grade'),
-  ('G10', '10th Grade') # To be fixed ---
+  ('G10', '10th Grade'),
+  ('G11', '11th Grade'),
+  ('G12', '12th Grade'),
 )
 
 
@@ -30,8 +32,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=1,
-        choices=STATUS,
-        default=STATUS[0][0]
+        choices=STATUS
     )
     # Add Avatar her or in a seperate model????----
     # avatar = models.ImageField(default)
@@ -60,7 +61,7 @@ class Task(models.Model):
     default=LEVELS[0][0]
   )
   body = models.CharField(max_length=2000)
-  date_created=models.DateTimeField(auto_now_add=True)
+  date_created = models.DateTimeField(auto_now_add=True)
   # doc = ?? How to implement the pictures
 
   def __str__(self):
