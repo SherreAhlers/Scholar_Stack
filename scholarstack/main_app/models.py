@@ -51,8 +51,8 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user} is a {self.status}"
 
-    # def get_absolute_url(self):
-    #   return reverse('create_status', kwarg={ 'pk': self.id })
+    def get_absolute_url(self):
+      return reverse('profile_detail', kwargs={ 'profile_id': self.id })
 
 class Task(models.Model):
   author = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -109,7 +109,7 @@ class Message(models.Model):
     '''
 class Profile_Avatar(models.Model):
   url = models.CharField(max_length=200)  #  <- need to set default
-  profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+  profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"This is the photo for profile_id: {self.profile_id} @{self.url}"

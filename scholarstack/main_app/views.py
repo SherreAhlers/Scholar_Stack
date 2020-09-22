@@ -7,7 +7,7 @@ from main_app.forms import ProfileCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Profile
+from .models import Profile, Profile_Avatar
 
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'scholarstack'
@@ -33,7 +33,8 @@ def home(request):
         return redirect('profile_detail', profile_id=profile.id)
     elif request.user.id == None:
         # print('User without profile')
-        return redirect('signup')
+        return redirect('login')
+
     else:
         return redirect('status_create')
 
@@ -43,7 +44,8 @@ def about(request):
 
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
-    return render(request, 'profile_index.html', {'profile': profile})
+    task_form = TaskForm()
+    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form})
 
 def edit_avatar(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
@@ -60,6 +62,15 @@ def edit_avatar(request, profile_id):
     except:
         print('An error occured uploading file to S3')
     return redirect('home')
+
+
+def create_task(request, profile_id):
+    form = TaskForm(request.POST)
+    if form.is_valid():
+        new_task = form.save(commit=False)
+        new_task.profile_id = profile_id
+        new_task.save()
+    return redirect('profile_detail', profile_id=profile_id)
 
 
 def signup(request):
