@@ -37,7 +37,7 @@ def home(request):
 
     else:
         return redirect('status_create')
-
+    
 
 def about(request):
     return render(request, 'about.html')
@@ -90,4 +90,4 @@ def signup(request):
 
 class StatusCreate(LoginRequiredMixin, CreateView):
     model = Profile
-    fields = ['status']
+    fields = '__all__'
