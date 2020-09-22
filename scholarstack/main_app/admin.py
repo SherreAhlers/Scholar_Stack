@@ -12,6 +12,7 @@ class ProfileInline(admin.StackedInline):
     verbose_name_plural = 'Profile'
     fk_name = 'user'
 
+
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
 
@@ -29,3 +30,4 @@ admin.site.register(Task)
 admin.site.register(Comment)
 admin.site.register(Message)
 # admin.site.register(Photo)
+

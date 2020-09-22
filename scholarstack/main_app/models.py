@@ -51,8 +51,8 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user} is a {self.status}"
 
-    def get_absolute_url(self):
-      return reverse('create_status', kwarg={ 'pk': self.id })
+    # def get_absolute_url(self):
+    #   return reverse('create_status', kwarg={ 'pk': self.id })
 
 class Task(models.Model):
   author = models.ForeignKey(Profile, on_delete=models.CASCADE)

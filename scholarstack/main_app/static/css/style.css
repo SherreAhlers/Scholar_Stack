@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+/* base */
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: blue;
+    background-color: white;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 main {
+    padding-top: 10px;
     flex: 1 0 auto;
 }
 
