@@ -4,6 +4,7 @@
 /* base */
 
 body {
+    margin: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -13,10 +14,102 @@ body {
 
 main {
     padding-top: 10px;
-    flex: 1 0 auto;
+    flex-grow: 1;
+    /* flex: 1 0 auto; */
 }
 
 footer.page-footer {
     padding-top: 0;
     text-align: right;
+    width: 80%;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+li {
+    display: inline;
+    padding: 25px;
+}
+
+li>a {
+    color: #374785;
+    font-weight: 900;
+    font-size: 20px;
+    ;
+}
+
+
+/* about */
+
+.aboutus {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    color: #374785;
+    padding: 100px;
+    background-image: url('https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 2px solid #24305e;
+}
+
+.intropara {
+    text-align: center;
+    font-size: 27px;
+}
+
+
+/* login  */
+
+.login-form {
+    width: 450px;
+    min-height: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin: 2% auto;
+    padding: 2%;
+}
+
+input {
+    border: none;
+}
+
+.btn {
+    width: 48%;
+    margin-left: 30%;
+    border: 2px solid #303c6c;
+    background-color: white;
+    color: #374785;
+    padding: 10px 10px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    border: ;
+    background-color: #f76c6c;
+    color: #374785;
+}
+
+form .con {
+    display: -webkit-inline-box;
+    display: inline-block;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.login-info {
+    margin: 2% auto 10% auto;
+    text-align: center;
 }
