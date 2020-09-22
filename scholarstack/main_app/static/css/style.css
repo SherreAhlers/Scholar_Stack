@@ -79,9 +79,11 @@ li>a {
     padding: 2%;
 }
 
-/* input {
-    border: none;
-} */
+input {
+    width: 100%;
+    padding: 12px;
+    resize: vertical;
+}
 
 .btn {
     width: 48%;
@@ -94,12 +96,12 @@ li>a {
 }
 
 .btn:hover {
-    border: ;
-    background-color: #f76c6c;
-    color: #374785;
+    background-color: rgba(248, 233, 161, .3);
+    color: #24305E;
+    border: 2px solid #374785;
 }
 
-form .con {
+/* form .con {
     display: -webkit-inline-box;
     display: inline-block;
     -webkit-justify-content: space-around;
@@ -107,18 +109,32 @@ form .con {
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     margin: 0 auto;
+} */
+
+.login-form {
+    width: 25%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px rgba(36, 48, 94, 0.6);
+    margin: 5em auto;
+    display: flex;
 }
 
 .login-info {
+    padding-left: 20px;
     margin: 2% auto 10% auto;
     text-align: center;
+    /* background-color:#008080;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+ 
+   
+    justify-content: center;
+    color: #fff */
 }
 
 /* sign up */
 
-.overlay {
-    background-color: #f76c6c;
-}
+
 
 .sign-form {
     width: 500px;
@@ -129,11 +145,28 @@ form .con {
     padding: 1%;
 }
 
-p {
-    color: greenyellow;
-}
-
 .form-content {
-
+    display: flex;
+    flex-direction: column;
 }
 
+.form-content li {
+    padding: 0;
+}
+
+
+.form-control {
+    border: none;
+}
+
+span.helptext ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+span.helptext ul li {
+    padding-top: 0;
+    padding-bottom: 0;
+}
