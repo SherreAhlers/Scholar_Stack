@@ -105,4 +105,4 @@ class ProfileCreationForm(CreateView):
     def form_valid(self, form):
         # print(self.request.user.id, '<- this is self.request.user.id')
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        return super().form_valid(form) 
