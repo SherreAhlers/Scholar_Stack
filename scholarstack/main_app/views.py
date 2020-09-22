@@ -34,6 +34,7 @@ def home(request):
     elif request.user.id == None:
         # print('User without profile')
         return redirect('login')
+
     else:
         return redirect('status_create')
 
@@ -45,7 +46,6 @@ def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
     return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form})
-
 
 def edit_avatar(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
@@ -63,6 +63,7 @@ def edit_avatar(request, profile_id):
         print('An error occured uploading file to S3')
     return redirect('home')
 
+
 def create_task(request, profile_id):
     form = TaskForm(request.POST)
     if form.is_valid():
@@ -73,18 +74,18 @@ def create_task(request, profile_id):
 
 
 def signup(request):
-    error_message = ''
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-        else:
-            error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+  error_message = ''
+  if request.method == 'POST': 
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('home')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
 
 
 class StatusCreate(LoginRequiredMixin, CreateView):
