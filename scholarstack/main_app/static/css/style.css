@@ -37,14 +37,14 @@ ul {
 
 li {
     display: inline;
-    padding: 25px;
+    padding: 20px;
 }
 
 li>a {
     color: #374785;
     font-weight: 900;
     font-size: 20px;
-    ;
+    
 }
 
 
@@ -112,4 +112,31 @@ form .con {
 .login-info {
     margin: 2% auto 10% auto;
     text-align: center;
+}
+
+/* sign up */
+
+.overlay {
+    background-color: #f76c6c;
+}
+
+.sign-form {
+    width: 500px;
+    min-height: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin: 1% auto;
+    padding: 1%;
+}
+
+p {
+    color: greenyellow;
+}
+
+.form-content {
+
+}
+
+ol {
+    list-style-type: circle;
 }

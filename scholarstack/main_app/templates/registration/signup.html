@@ -1,11 +1,32 @@
 {% extends 'base.html' %} {% block content %}
 <div class="overlay">
-    <form class="login-form" method="POST" action="{% url 'signup' %}">
+    <form class="sign-form" method="POST" action="{% url 'signup' %}">
         <div class="con">
             <header class="login-info">
                 <h1>Sign Up</h1>
             </header>
-            {% csrf_token %} {{ form.as_p }}
+            <div class="form-content">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-field">
+                    <div role="group" class="form-control">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                    {% if field.errors %}
+                    <ol>
+                        {% for error in field.errors %}
+                        <li><strong>{{ error|escape }}</strong></li>
+                        {% endfor %}
+                    </ol>
+                    {% endif %}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {{ form.non_field_errors }}
+            </div>
             <input type="submit" class="btn" value="Sign Up">
         </div>
     </form>
