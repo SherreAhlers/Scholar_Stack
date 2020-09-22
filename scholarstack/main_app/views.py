@@ -7,7 +7,7 @@ from main_app.forms import ProfileCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Profile, Profile_Avatar
+from .models import Profile, Profile_Avatar, Task
 from .forms import TaskForm, ProfileCreationForm
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
