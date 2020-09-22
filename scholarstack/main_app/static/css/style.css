@@ -16,11 +16,7 @@ body {
 main {
     padding-top: 10px;
     flex-grow: 1;
-<<<<<<< HEAD
-    
-=======
     /* flex: 1 0 auto; */
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
 }
 
 footer.page-footer {
@@ -44,14 +40,6 @@ li {
     padding: 25px;
 }
 
-<<<<<<< HEAD
-li > a {
-    color: #374785;
-    font-weight: 900;
-    font-size: 20px;;
-}
-
-=======
 li>a {
     color: #374785;
     font-weight: 900;
@@ -60,7 +48,6 @@ li>a {
 }
 
 
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
 /* about */
 
 .aboutus {
@@ -74,10 +61,6 @@ li>a {
     background-size: cover;
     border-radius: 10px;
     border: 2px solid #24305e;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
 }
 
 .intropara {
@@ -85,10 +68,6 @@ li>a {
     font-size: 27px;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
 /* login  */
 
 .login-form {
@@ -100,9 +79,9 @@ li>a {
     padding: 2%;
 }
 
-input {
+/* input {
     border: none;
-}
+} */
 
 .btn {
     width: 48%;
@@ -133,19 +112,4 @@ form .con {
 .login-info {
     margin: 2% auto 10% auto;
     text-align: center;
-<<<<<<< HEAD
 }
-
-/* sign up */
-
-
-
-
-
-
-
-
-
-=======
-}
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
