@@ -70,7 +70,8 @@ def create_task(request, profile_id):
     form = TaskForm(request.POST)
     if form.is_valid():
         new_task = form.save(commit=False)
-        new_task.profile_id = profile_id
+        # new_task.author = profile_id
+        new_task.author_id = profile_id
         new_task.save()
     return redirect('profile_detail', profile_id=profile_id)
 

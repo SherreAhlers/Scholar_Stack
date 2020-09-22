@@ -62,4 +62,4 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ['title', 'field', 'level', 'body']

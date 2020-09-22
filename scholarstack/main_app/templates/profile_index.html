@@ -37,12 +37,14 @@
   <input type="submit" class="btn" value="Create Task">
 </form>
 
-{% for task in tasks%}
+{% for task in tasks %}
 <div>
-  {{ task.author }}
-  {{ task.title }}
-  {{ task.field }}
-  {{ task.level }}
+  <p>task is diplayed down bellow</p>
+  <p>{{ task.author }}</p>
+  <p>{{ task.title }}</p>
+  <p>{{ task.field }}</p>
+  <p>{{ task.level }}</p>
+  <p>{{ task.body }}</p>
 </div>
 {% endfor %}
 
