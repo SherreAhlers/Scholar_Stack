@@ -8,8 +8,9 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: white;
+    background-color:white;
     font-family: 'Kumbh Sans', sans-serif;
+
 }
 
 main {
@@ -67,7 +68,6 @@ li>a {
     font-size: 27px;
 }
 
-
 /* login  */
 
 .login-form {
@@ -79,9 +79,9 @@ li>a {
     padding: 2%;
 }
 
-input {
+/* input {
     border: none;
-}
+} */
 
 .btn {
     width: 48%;
