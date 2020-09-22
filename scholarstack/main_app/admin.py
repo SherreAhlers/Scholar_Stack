@@ -6,7 +6,6 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import ProfileCreationForm, ProfileChangeForm
 from .models import Profile, Task, Comment, Message
 
-
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
@@ -31,3 +30,4 @@ admin.site.register(Task)
 admin.site.register(Comment)
 admin.site.register(Message)
 # admin.site.register(Photo)
+

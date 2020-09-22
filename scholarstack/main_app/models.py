@@ -24,7 +24,7 @@ LEVELS = (
   ('G9', '9th Grade'),
   ('G10', '10th Grade'),
   ('G11', '11th Grade'),
-  ('G12', '12th grade'),
+  ('G12', '12th Grade'),
 )
 
 
@@ -32,9 +32,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=1,
-        choices=STATUS,
-        default=STATUS[0][0]
+        choices=STATUS
     )
+
     # Add Avatar here or in a seperate model????----
     # avatar = models.ImageField(default)
 
@@ -51,6 +51,8 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user} is a {self.status}"
 
+    # def get_absolute_url(self):
+    #   return reverse('create_status', kwarg={ 'pk': self.id })
 
 class Task(models.Model):
   author = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -62,7 +64,7 @@ class Task(models.Model):
     default=LEVELS[0][0]
   )
   body = models.CharField(max_length=2000)
-  date_created=models.DateTimeField(auto_now_add=True)
+  date_created = models.DateTimeField(auto_now_add=True)
   # doc = ?? How to implement the pictures
 
   def __str__(self):
