@@ -37,6 +37,15 @@
   <input type="submit" class="btn" value="Create Task">
 </form>
 
+{% for task in tasks%}
+<div>
+  {{ task.author }}
+  {{ task.title }}
+  {{ task.field }}
+  {{ task.level }}
+</div>
+{% endfor %}
+
 
 
 

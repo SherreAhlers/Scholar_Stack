@@ -46,7 +46,8 @@ def about(request):
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
-    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form})
+    tasks = Task.objects.filter(author=profile_id)
+    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'tasks': tasks})
 
 def edit_avatar(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
