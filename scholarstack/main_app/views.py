@@ -36,7 +36,7 @@ def home(request):
         return redirect('signup')
     else:
         return redirect('status_create')
-    
+
 
 def about(request):
     return render(request, 'about.html')
