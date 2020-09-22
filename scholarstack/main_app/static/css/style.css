@@ -16,15 +16,7 @@ body {
 main {
     padding-top: 10px;
     flex-grow: 1;
-<<<<<<< HEAD
     /* flex: 1 0 auto; */
-=======
-<<<<<<< HEAD
-    
-=======
-    /* flex: 1 0 auto; */
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
->>>>>>> master
 }
 
 footer.page-footer {
@@ -48,19 +40,6 @@ li {
     padding: 25px;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-li > a {
-    color: #374785;
-    font-weight: 900;
-    font-size: 20px;;
-}
-
-<<<<<<< HEAD
-=======
-=======
 li>a {
     color: #374785;
     font-weight: 900;
@@ -69,8 +48,6 @@ li>a {
 }
 
 
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
->>>>>>> master
 /* about */
 
 .aboutus {
@@ -84,14 +61,6 @@ li>a {
     background-size: cover;
     border-radius: 10px;
     border: 2px solid #24305e;
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
->>>>>>> master
 }
 
 .intropara {
@@ -99,13 +68,6 @@ li>a {
     font-size: 27px;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
->>>>>>> master
 /* login  */
 
 .login-form {
@@ -150,27 +112,4 @@ form .con {
 .login-info {
     margin: 2% auto 10% auto;
     text-align: center;
-<<<<<<< HEAD
 }
-
-=======
-<<<<<<< HEAD
-}
-
-/* sign up */
-
-
->>>>>>> master
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
-=======
-}
->>>>>>> 0f864e3375ea5eec5ab0499b977fcc493d1dabfc
->>>>>>> master
