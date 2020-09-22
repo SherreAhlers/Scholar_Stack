@@ -30,13 +30,16 @@ def home(request):
     elif request.user and not request.user.profile.status:
       print('User without profile')
       return redirect(request, 'create_status')
+    else:
+      return render(request, 'home.html')
+    
 
 def about(request):
     return render(request, 'about.html')
 
 def signup(request):
   error_message = ''
-  if request.method == 'POST':
+  if request.method == 'POST': 
     form = UserCreationForm(request.POST)
     if form.is_valid():
       user = form.save()
