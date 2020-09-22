@@ -1,5 +1,44 @@
  {% extends 'base.html' %} {% block content %}
 <h1>This is the index for profile.</h1>
 <p>{{ user.profile }}</p>
+<p>{{ profile.id }}</p>
+<p>{{ profile.status }}</p>
+<p>{{ user.user_name }}</p>
+<p>{{ user.password }}</p>
+<p>{{ profile.profile_avatar.url }} this is the avatar url</p>
+    {% for avatar in profile.profile_avatar_set.all %}
+      <img class="responsive-img card-panel" src="{{avatar.url}}">
+    {% empty %}
+      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+{% comment %} <p>{{ profile.profile_avatar_set.all }}</p> {% endcomment %}
+<p>{{ profile.profile_avatar_set.all }}</p>
+<p>{{ user.profile }}</p>
+<img src="https://s3.us-west-1.amazonaws.com/scholarstack/47c9a5.jpg">
+
+<p>{{ user.profile }}</p>
+<form action="{% url 'edit_avatar' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+    {% csrf_token %}
+    <input type="file" name="photo-file">
+    <br><br>
+    <input type="submit" class="btn" value="Change Avatar">
+</form>
+{% if profile.status == 'S'%}
+<p>This user is a student</p>
+<form action="{% url 'create_task' profile.id %}"method="POST" class="card-panel">
+  {% csrf_token %}
+  {{ task_form.as_p }}
+  <br><br>
+  <input type="submit" class="btn" value="Create Task">
+</form>
+
+
+
+
+
+
+{% elif profile.status == 'T'%}
+<p>This user is a Tutor</p>
+{% endif %}
 
 {% endblock %}
