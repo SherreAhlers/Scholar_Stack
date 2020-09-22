@@ -15,12 +15,18 @@ body {
 
 main {
     padding-top: 10px;
-    flex: 1 0 auto;
+    flex-grow: 1;
+    /* flex: 1 0 auto; */
 }
 
 footer.page-footer {
     padding-top: 0;
     text-align: right;
+    width: 80%;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul {
