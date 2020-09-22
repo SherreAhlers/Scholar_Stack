@@ -90,4 +90,4 @@ def signup(request):
 
 class StatusCreate(LoginRequiredMixin, CreateView):
     model = Profile
-    fields = ['status']
+    fields = '__all__'
