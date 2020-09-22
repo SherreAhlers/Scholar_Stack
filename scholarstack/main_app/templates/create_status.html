@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Are you a Student or a Tutor?</h1>
+<form method="POST" action="{% url 'create_status' %}">
+    {% csrf_token %} {{ form.as_p }}
+</form>
+
+{% endblock %}
