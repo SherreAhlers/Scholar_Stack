@@ -38,7 +38,7 @@ def home(request):
     else:
         # profile = Profile.objects.get(id=request.user.profile.id)
         return redirect('status_create')
-
+    
 
 def about(request):
     return render(request, 'about.html')
