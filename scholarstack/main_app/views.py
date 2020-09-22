@@ -25,34 +25,34 @@ def user_has_profile(request, profile):
 
 
 def home(request):
-    if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
-    # user_has_profile(request, request.user.profile):
-        print('User is_authenticated and has a profile')
-        return render(request, 'profile_index.html')
-    elif request.user.id == None:
-        print('User without profile')
-        return redirect('signup')
+    # print('hitting home', request.user.profile.status)
+    if user_has_profile(request, request.user.profile) == True:
+      print('User has profile')
+      return render(request, 'profile_index.html')
+    elif request.user and not request.user.profile.status:
+      print('User without profile')
+      return redirect(request, 'create_status')
     else:
-        return redirect('status_create')
-
+      return render(request, 'home.html')
+    
 
 def about(request):
     return render(request, 'about.html')
 
 
 def signup(request):
-    error_message = ''
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-        else:
-            error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+  error_message = ''
+  if request.method == 'POST': 
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('home')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
 
 
 class StatusCreate(LoginRequiredMixin, CreateView):
