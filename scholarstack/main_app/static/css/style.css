@@ -4,6 +4,7 @@
 /* base */
 
 body {
+    margin: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -71,6 +72,25 @@ li > a {
     padding: 2%;
 }
 
+input {
+    border: none;
+}
+
+.btn {
+    width: 48%;
+    margin-left: 30%;
+    border: 2px solid #303c6c;
+    background-color: white;
+    color: #374785;
+    padding: 10px 10px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #f76c6c;
+    color: #374785;
+}
+
 form .con {
     display: -webkit-inline-box;
     display: inline-block;
@@ -86,11 +106,9 @@ form .con {
     text-align: center;
 }
 
-.overlay {
-    background-color: pink;
-    
-    
-}
+
+
+
 
 
 
