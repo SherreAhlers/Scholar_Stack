@@ -7,11 +7,12 @@ from main_app.forms import ProfileCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Profile, Profile_Avatar, Task
-from .forms import TaskForm, ProfileCreationForm
+from .models import User, Profile, Profile_Avatar, Task, Comment
+from .forms import TaskForm, ProfileCreationForm, CommentForm
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'scholarstack'
+
 # Create your views here.
 
 
@@ -47,7 +48,7 @@ def about(request):
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
-    tasks = Task.objects.filter(author=profile_id)
+    tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
     return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'tasks': tasks})
 
 
@@ -62,7 +63,7 @@ def edit_avatar(request, profile_id):
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        avatar = Profile_Avatar.objects.filter(profile_id=profile_id)
+        avatar = Profile_Avatar.objects.get(profile_id=profile_id)
         avatar.url = url
         avatar.save()
         # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
@@ -81,6 +82,29 @@ def create_task(request, profile_id):
     return redirect('profile_detail', profile_id=profile_id)
 
 
+def task_detail(request, task_id, task_author_id):
+    # task = Task.objects.get(id=task_id)
+    task = Task.objects.get(id=task_id)
+    comments = Comment.objects.filter(
+        task_id=task_id).order_by('-date_created')
+    comment_form = CommentForm()
+    return render(request, 'task_detail.html', {'task': task, 'comments': comments, 'comment_form': comment_form})
+
+
+def create_comment(request, task_id, comment_author_id):
+    author = User.objects.get(id=comment_author_id)
+    task = Task.objects.get(id=task_id)
+    # task = Task.objects.get(task_id=task_id)
+    task_author_id = task.author_id
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.author_id = comment_author_id
+        new_comment.task_id = task_id
+        new_comment.save()
+    return redirect('task_detail', task_id=task_id, task_author_id=task_author_id)
+
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -94,6 +118,7 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
 
 # def status_create(request, profile_id):
 #     form = ProfileCreationForm(request.POST)
