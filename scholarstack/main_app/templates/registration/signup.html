@@ -11,7 +11,6 @@
 
             <div class="form-content">
                 {% csrf_token %}
-                {% for field in form %}
                 {{ form.as_ul }}
 
 
@@ -21,6 +20,7 @@
         </div>
     </form>
 </div>
+
 
 
 {% endblock %}
