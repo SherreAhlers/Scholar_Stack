@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import ProfileCreationForm, ProfileChangeForm
-from .models import Profile, Task, Comment, Message
+from .models import Profile, Task, Comment, Message, Profile_Avatar
 
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -29,5 +29,5 @@ admin.site.register(Profile)
 admin.site.register(Task)
 admin.site.register(Comment)
 admin.site.register(Message)
-# admin.site.register(Photo)
+admin.site.register(Profile_Avatar)
 
