@@ -1,11 +1,15 @@
 {% extends 'base.html' %} {% block content %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 <div class="overlay">
 
     <form class="sign-form" method="POST" action="{% url 'signup' %}">
 
 
         <div class="con">
-            <header class="login-info">
+            <header class="sign-info">
                 <h1>Sign Up</h1>
             </header>
 
@@ -15,7 +19,7 @@
 
             </div>
 
-            <input type="submit" class="btn" value="Sign Up">
+            <input type="submit" class="btn-signup btn-outline-primary" value="Sign Up">
         </div>
     </form>
 </div>

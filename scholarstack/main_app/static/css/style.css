@@ -33,6 +33,7 @@ ul {
     list-style: none;
     margin: 0;
     overflow: hidden;
+    margin-bottom: 40px ;
 }
 
 li {
@@ -43,7 +44,7 @@ li {
 li>a {
     color: #374785;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 23px;
     
 }
 
@@ -70,99 +71,113 @@ li>a {
 
 /* login  */
 
+
 .login-form {
-    width: 450px;
-    min-height: 300px;
-    height: auto;
-    border-radius: 10px;
-    margin: 2% auto;
-    padding: 2%;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    resize: vertical;
-}
-/* input {
-    border: none;
-} */
-
-
-.btn {
-    width: 48%;
-    margin-left: 30%;
-    border: 2px solid #303c6c;
-    background-color: white;
     color: #374785;
-    padding: 10px 10px;
-    font-size: 16px;
-}
-
-.btn:hover {
-    background-color: rgba(248, 233, 161, .3);
-    color: #24305E;
-    border: 2px solid #374785;
-}
-
-/* form .con {
-    display: -webkit-inline-box;
-    display: inline-block;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0 auto;
-} */
-
-.login-form {
-    width: 25%;
-    border-radius: 20px;
-    box-shadow: 3px 3px 3px 3px rgba(36, 48, 94, 0.6);
-    margin: 5em auto;
+    width: 100%;
+    margin: auto;
+    max-width: 475px;
+    min-height: 450px;
+    position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+    border-radius: 20px;
+}
+
+.login-form::before {
+    content: "";
+    background-image: url('https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    border-radius: 20px;
 }
 
 .login-info {
     padding-left: 20px;
-    margin: 2% auto 10% auto;
     text-align: center;
-
-
-<<<<<<< HEAD
-/* .sign-form {
-=======
-    /* background-color:#008080;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
- 
-   
+    position: relative;
+    color: #374785;
+    font-size: 20px;
+    line-height: 0.9;
+    align-items: center;
     justify-content: center;
-    color: #fff */
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    resize: vertical;
+}
+
+
+.btn {
+    width: 45%;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+    display: flex; 
+    border: 2px solid #303c6c;
+    background-color: white;
+    color: #374785;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.btn:hover {
+    color: #374785;
+    background-color: #F76C6C;
+    border: 2px solid #374785;
 }
 
 /* sign up */
-
-
-
-
 .sign-form {
->>>>>>> 4a118f850835ce220da900c55352cbf79cedbda8
-    width: 500px;
-    min-height: 200px;
-    height: auto;
-    border-radius: 10px;
-    margin: 1% auto;
-    padding: 1%;
-} */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 35px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px rgba(36, 48, 94, 0.6);
+    color: #374785;
+    /* margin: 5em auto; */
+    max-width: 100%;
+  
+}
+
+.sign-info {
+    padding-left: 20px;
+    text-align: center;
+    position: relative;
+    color: #374785;
+    font-size: 20px;
+    line-height: 0.9;
+    align-items: center;
+    justify-content: center;
+
+}
 
 .form-content {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    margin-left: 305px;
+    padding-top: 0;
+    margin-top: 0;
+    max-width: 100%;
+    color: #374785;
 }
 
 .form-content li {
-    padding: 0;
+    padding: 5px;
 }
 
 
@@ -175,11 +190,29 @@ span.helptext ul {
     margin: 0;
     padding: 0;
     flex-direction: column;
+    color: #374785;
+
 }
 
 span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
+
 }
 
+.btn-signup {
+    width: 25%;
+    margin-left: 40%;
+    border: 2px solid #303c6c;
+    background-color: white;
+    color: #374785;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+    font-size: 16px
+}
 
+.btn-signup:hover {
+    background-color: rgba(248, 233, 161, .3);
+    color: #24305E;
+    border: 2px solid #374785;
+}
