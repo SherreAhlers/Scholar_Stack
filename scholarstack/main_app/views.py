@@ -26,6 +26,7 @@ def user_has_profile(request, profile):
 
 
 def home(request):
+    print(request.user, "this is request.user")
     if not request.user:
         # print('User without profile')
         return redirect('login')
