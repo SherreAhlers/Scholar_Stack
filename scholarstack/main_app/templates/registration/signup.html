@@ -1,10 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <div class="overlay">
+
     <form class="sign-form" method="POST" action="{% url 'signup' %}">
+
+  
         <div class="con">
             <header class="login-info">
                 <h1>Sign Up</h1>
             </header>
+
             <div class="form-content">
                 {% csrf_token %}
                 {% for field in form %}
@@ -28,15 +32,18 @@
                 {% endfor %}
                 {{ form.non_field_errors }} -->
             </div>
+
             <input type="submit" class="btn" value="Sign Up">
         </div>
     </form>
 </div>
 
 
+
 {% endblock %}
 
 {% block footer %}
 <img src="https://i.imgur.com/L2k5RBN.png?1" class="footer-img" alt="garland banner of children" width="100%" />
+
 
 {% endblock %}

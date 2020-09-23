@@ -37,7 +37,9 @@ ul {
 
 li {
     display: inline;
-    padding: 20px;
+
+    padding: 25px;
+
 }
 
 li>a {
@@ -79,11 +81,13 @@ li>a {
     padding: 2%;
 }
 
+
 input {
     width: 100%;
     padding: 12px;
     resize: vertical;
 }
+
 
 .btn {
     width: 48%;
@@ -123,17 +127,6 @@ input {
     padding-left: 20px;
     margin: 2% auto 10% auto;
     text-align: center;
-    /* background-color:#008080;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
- 
-   
-    justify-content: center;
-    color: #fff */
-}
-
-/* sign up */
-
 
 
 .sign-form {
@@ -170,3 +163,6 @@ span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+
+
