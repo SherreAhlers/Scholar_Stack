@@ -52,7 +52,7 @@ def profile_detail(request, profile_id):
 
 
 def edit_avatar(request, profile_id):
-    photo_file = request.FILES.get('photo-file', None)[0]
+    photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
         # We need a unic key / but keep the file extention too
