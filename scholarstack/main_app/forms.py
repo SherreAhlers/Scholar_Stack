@@ -1,23 +1,14 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.core.files.images import get_image_dimensions
-from .models import Profile, Task
+# from django.core.files.images import get_image_dimensions
+from .models import Profile, Task, Comment
 
 class ProfileCreationForm(UserCreationForm):
 
     class Meta:
         model = Profile
         fields = ['status']
-    
-
-
-
-
-
-
-
-
     
     # def clean_avatar(self):
     #     avatar = self.cleaned_data['avatar']
@@ -63,3 +54,9 @@ class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'field', 'level', 'body']
+
+class CommentForm(ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['body']

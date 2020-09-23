@@ -15,13 +15,12 @@
       <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endif %}
 
-{% comment %} 
-<p>{{ profile.profile_avatar_set.all }}</p> {% endcomment %}
+
+<p>{{ profile.profile_avatar_set.first }}</p> 
 <p>{{ profile.profile_avatar_set.all }}</p>
 <p>{{ user.profile }}</p>
 <!-- <img src="https://s3.us-east-2.amazonaws.com/scholarstack/9532b0.jpeg"> -->
 
-<p>{{ user.profile }}</p>
 <form action="{% url 'edit_avatar' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
     {% csrf_token %}
     <input type="file" name="photo-file">
@@ -30,7 +29,7 @@
 </form>
 {% if profile.status == 'S'%}
 <p>This user is a student</p>
-<form action="{% url 'create_task' profile.id %}"method="POST" class="card-panel">
+<form action="{% url 'create_task' profile.id %}" method="POST" class="card-panel">
   {% csrf_token %}
   {{ task_form.as_p }}
   <br><br>
@@ -38,6 +37,7 @@
 </form>
 
 {% for task in tasks %}
+<a href=""></a>
 <div>
   <p>task is diplayed down bellow</p>
   <p>{{ task.author }}</p>
@@ -45,10 +45,10 @@
   <p>{{ task.field }}</p>
   <p>{{ task.level }}</p>
   <p>{{ task.body }}</p>  
+  <a href="{% url 'task_detail' task.id task.author.id %}">See details</a>
+
 </div>
 {% endfor %}  
-
-
 
 
 

@@ -78,7 +78,7 @@ class Task(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -95,9 +95,9 @@ class Comment(models.Model):
 
 class Message(models.Model):
     sender = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="sender")
+        User, on_delete=models.CASCADE, related_name="sender")
     reciever = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="reciever")
+        User, on_delete=models.CASCADE, related_name="reciever")
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
     # doc = ?? How to implement the pictures
@@ -113,7 +113,7 @@ class Message(models.Model):
 
 
 class Profile_Avatar(models.Model):
-    url = models.CharField(max_length=200)  # <- need to set default
+    url = models.CharField(max_length=200, default='https://i.imgur.com/qx38J6i.png')  # <- need to set default
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
