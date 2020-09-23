@@ -59,7 +59,9 @@ def edit_avatar(request, profile_id):
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        Profile_Avatar.objects.create(url=url, profile_id=profile_id)
+        avatar = Profile_Avatar.objects.get(profile_id=profile_id)
+        avatar.url = url
+        avatar.save()
         # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
     except:
         print('An error occured uploading file to S3')

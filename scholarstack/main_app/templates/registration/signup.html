@@ -10,7 +10,7 @@
             </header>
 
             <div class="form-content">
-                {% csrf_token %} {% for field in form %} {{ form.as_ul }}
+                {% csrf_token %}{{ form.as_ul }}
 
 
             </div>
