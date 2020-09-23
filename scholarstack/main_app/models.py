@@ -4,8 +4,8 @@ from django.urls import reverse
 from datetime import date
 from django.db import models
 from django.db.models.signals import post_save
-# Create your models here.
 
+# Create your models here.
 STATUS = (
     ('S', 'Student'),
     ('T', 'Tutor')
@@ -26,7 +26,6 @@ LEVELS = (
     ('G12', '12th Grade'),
 )
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     status = models.CharField(
@@ -36,22 +35,19 @@ class Profile(models.Model):
 
     # Add Avatar here or in a seperate model????----
     # avatar = models.ImageField(default)
-
     # @receiver(post_save, sender=User)
     # def create_user_profile(sender, instance, created, **kwargs):
     #     if created:
     #         Profile.objects.create(user=instance)
-
     # @receiver(post_save, sender=User)
     # def save_user_profile(sender, instance, **kwargs):
     #     instance.profile.save()
-
     def __str__(self):
         return f"{self.user} is a {self.status}"
 
+
     def get_absolute_url(self):
         return reverse('profile_detail', kwargs={'profile_id': self.id})
-
 
 class Task(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -64,8 +60,8 @@ class Task(models.Model):
     )
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
-    # doc = ?? How to implement the pictures
 
+    # doc = ?? How to implement the pictures
     def __str__(self):
         return f'''
     Task_id: {self.id},
@@ -76,9 +72,8 @@ class Task(models.Model):
     Body: {self.body}
     '''
 
-
 class Comment(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -92,12 +87,11 @@ class Comment(models.Model):
     Body: {self.body}
     '''
 
-
 class Message(models.Model):
     sender = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="sender")
+        User, on_delete=models.CASCADE, related_name="sender")
     reciever = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="reciever")
+        User, on_delete=models.CASCADE, related_name="reciever")
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
     # doc = ?? How to implement the pictures
@@ -111,14 +105,12 @@ class Message(models.Model):
     Created @: {self.date_created}
     '''
 
-
 class Profile_Avatar(models.Model):
-    url = models.CharField(max_length=200)  # <- need to set default
+    url = models.CharField(max_length=200, default='https://i.imgur.com/qx38J6i.png')  # <- need to set default
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"This is the photo for profile_id: {self.profile_id} @{self.url}"
-
 
 class Task_Doc(models.Model):
     url = models.CharField(max_length=200)
@@ -127,14 +119,12 @@ class Task_Doc(models.Model):
     def __str__(self):
         return f"This is the photo for task_id: {self.task_id} @{self.url}"
 
-
 class Comment_Doc(models.Model):
     url = models.CharField(max_length=200)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"This is the photo for comment_id: {self.comment_id} @{self.url}"
-
 
 class Message_Doc(models.Model):
     url = models.CharField(max_length=200)
