@@ -37,7 +37,11 @@ ul {
 
 li {
     display: inline;
+<<<<<<< HEAD
     padding: 20px;
+=======
+    padding: 25px;
+>>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
 }
 
 li>a {
@@ -79,11 +83,17 @@ li>a {
     padding: 2%;
 }
 
+<<<<<<< HEAD
 input {
     width: 100%;
     padding: 12px;
     resize: vertical;
 }
+=======
+/* input {
+    border: none;
+} */
+>>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
 
 .btn {
     width: 48%;
@@ -123,6 +133,7 @@ input {
     padding-left: 20px;
     margin: 2% auto 10% auto;
     text-align: center;
+<<<<<<< HEAD
     /* background-color:#008080;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -170,3 +181,6 @@ span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
 }
+=======
+}
+>>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
