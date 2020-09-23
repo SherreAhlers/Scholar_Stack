@@ -26,15 +26,15 @@ def user_has_profile(request, profile):
 
 
 def home(request):
-    if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
+    if request.user.id == None:
+        # print('User without profile')
+        return redirect('login')
+    elif hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
     # user_has_profile(request, request.user.profile):
         # print('User is_authenticated and has a profile')
         profile = Profile.objects.get(id=request.user.profile.id)
         # avatar = Profile_Avatar.objects.get(profile_id=request.user.profile.id)
         return redirect('profile_detail', profile_id=profile.id)
-    elif request.user.id == None:
-        # print('User without profile')
-        return redirect('login')
     else:
         # profile = Profile.objects.get(id=request.user.profile.id)
         return redirect('status_create')
