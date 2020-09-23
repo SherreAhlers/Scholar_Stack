@@ -37,9 +37,7 @@ ul {
 
 li {
     display: inline;
-
-    padding: 25px;
-
+    padding: 20px;
 }
 
 li>a {
@@ -81,12 +79,14 @@ li>a {
     padding: 2%;
 }
 
-
 input {
     width: 100%;
     padding: 12px;
     resize: vertical;
 }
+/* input {
+    border: none;
+} */
 
 
 .btn {
@@ -129,7 +129,25 @@ input {
     text-align: center;
 
 
+<<<<<<< HEAD
 /* .sign-form {
+=======
+    /* background-color:#008080;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+ 
+   
+    justify-content: center;
+    color: #fff */
+}
+
+/* sign up */
+
+
+
+
+.sign-form {
+>>>>>>> 4a118f850835ce220da900c55352cbf79cedbda8
     width: 500px;
     min-height: 200px;
     height: auto;
@@ -163,6 +181,5 @@ span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
 }
-
 
 
