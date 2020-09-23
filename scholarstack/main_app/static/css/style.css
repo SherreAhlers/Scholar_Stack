@@ -37,17 +37,7 @@ ul {
 
 li {
     display: inline;
-<<<<<<< HEAD
-<<<<<<< HEAD
     padding: 20px;
-=======
-    padding: 25px;
->>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
-=======
-
-    padding: 25px;
-
->>>>>>> 642bad06347502e4749e216440d9ec60d875800a
 }
 
 li>a {
@@ -89,25 +79,15 @@ li>a {
     padding: 2%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 642bad06347502e4749e216440d9ec60d875800a
 input {
     width: 100%;
     padding: 12px;
     resize: vertical;
 }
-<<<<<<< HEAD
-=======
 /* input {
     border: none;
 } */
->>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
-=======
 
->>>>>>> 642bad06347502e4749e216440d9ec60d875800a
 
 .btn {
     width: 48%;
@@ -147,8 +127,8 @@ input {
     padding-left: 20px;
     margin: 2% auto 10% auto;
     text-align: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
     /* background-color:#008080;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -160,8 +140,7 @@ input {
 
 /* sign up */
 
-=======
->>>>>>> 642bad06347502e4749e216440d9ec60d875800a
+
 
 
 .sign-form {
@@ -198,12 +177,5 @@ span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
 }
-<<<<<<< HEAD
-=======
-}
->>>>>>> 60ed5f7521acb3d24eed8cb445a8310ce86e1fe4
-=======
 
 
-
->>>>>>> 642bad06347502e4749e216440d9ec60d875800a
