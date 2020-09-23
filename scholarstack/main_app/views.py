@@ -27,7 +27,7 @@ def user_has_profile(request, profile):
 
 def home(request):
     if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
-    # user_has_profile(request, request.user.profile):
+        # user_has_profile(request, request.user.profile):
         # print('User is_authenticated and has a profile')
         profile = Profile.objects.get(id=request.user.profile.id)
         # avatar = Profile_Avatar.objects.get(profile_id=request.user.profile.id)
@@ -38,10 +38,11 @@ def home(request):
     else:
         # profile = Profile.objects.get(id=request.user.profile.id)
         return redirect('status_create')
-    
+
 
 def about(request):
     return render(request, 'about.html')
+
 
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
@@ -49,17 +50,21 @@ def profile_detail(request, profile_id):
     tasks = Task.objects.filter(author=profile_id)
     return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'tasks': tasks})
 
+
 def edit_avatar(request, profile_id):
-    photo_file = request.FILES.get('photo-file', None)
+    photo_file = request.FILES.get('photo-file', None)[0]
     if photo_file:
         s3 = boto3.client('s3')
         # We need a unic key / but keep the file extention too
-        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
         # just in case we get an errot
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        Profile_Avatar.objects.create(url=url, profile_id=profile_id)
+        avatar = Profile_Avatar.objects.filter(profile_id=profile_id)
+        avatar.url = url
+        avatar.save()
         # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
     except:
         print('An error occured uploading file to S3')
@@ -77,18 +82,18 @@ def create_task(request, profile_id):
 
 
 def signup(request):
-  error_message = ''
-  if request.method == 'POST': 
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('home')
-    else:
-      error_message = 'Invalid sign up - try again'
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
 
 # def status_create(request, profile_id):
 #     form = ProfileCreationForm(request.POST)
@@ -97,6 +102,7 @@ def signup(request):
 #         new_profile_status.profile_id = profile_id
 #         new_profile_status.save()
 #     return redirect('profile_detail', profile_id=profile_id)
+
 
 class ProfileCreationForm(CreateView):
     model = Profile

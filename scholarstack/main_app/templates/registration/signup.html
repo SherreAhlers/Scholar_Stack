@@ -10,8 +10,7 @@
             </header>
 
             <div class="form-content">
-                {% csrf_token %}
-                {{ form.as_ul }}
+                {% csrf_token %} {{ form.as_ul }}
 
 
             </div>
@@ -22,10 +21,6 @@
 </div>
 
 
-
-{% endblock %}
-
-
-{% block footer %}
+{% endblock %} {% block footer %}
 <img src="https://i.imgur.com/L2k5RBN.png?1" class="footer-img" alt="garland banner of children" width="100%" />
 {% endblock %}
