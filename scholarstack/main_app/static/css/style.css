@@ -13,6 +13,28 @@ body {
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+header.navbar-fixed {
+    margin-bottom: 40px;
+}
+
+nav .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+
+nav .nav-wrapper ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav .nav-wrapper img.profile-avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+}
+
 main {
     padding-top: 10px;
     flex-grow: 1;
@@ -33,7 +55,6 @@ ul {
     list-style: none;
     margin: 0;
     overflow: hidden;
-    margin-bottom: 40px ;
    
 }
 
@@ -254,7 +275,7 @@ span.helptext ul li {
 
 .homepage::before {
     content: " ";
-    background-image: url('https://images.unsplash.com/photo-1550475476-44c382c5f2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80');
+    background-image: url('https://i.imgur.com/IRK1Z0Y.png');
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -262,19 +283,167 @@ span.helptext ul li {
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.1;
-    border-radius: 20px;
+    opacity: .8;
     z-index: -1;
 }
 
-
-h1 {
-    font-size: 4em;
+/* profile index */
+.profile-header {
     text-align: center;
+}
+
+.profile-index {
+    display: flex;
+}
+
+.profile-index .profile {
+    display: flex;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+
+.profile-index .edit-profile {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+}
+
+.edit-profile .avatar {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 0.25rem;
+}
+
+.avatar .avatar-img {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.avatar::after {
+    content: "";
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+}
+
+.avatar:hover::after {
+    opacity: 1;
+    content: "Change your avatar";
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.avatar input[type="file"] {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.avatar:hover {
+    cursor: pointer;
+}
+
+.edit-profile input[type="submit"] {
+    width: inherit;
+}
+
+.change-btn {
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    color: slategray;
+    border-radius: 3px;
 
 }
 
-p {
+.change-btn:hover {
+    background-color: whitesmoke; /* Green */
+    color: slategray;
+}
+
+.tasks {
     text-align: center;
-    font-size: 2em;
+    padding-top: 15px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.card-panel {
+    margin-left: 25%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.class-detail {
+    margin: 25px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.delete-confirm {
+    text-align: center;
+    padding: 20px;
+}
+
+.task-card {
+    padding: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 5px 5px 10px #888888;
+    align-items: center;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.task-card h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0.025;
+    color: #1a1a1a;
+    padding: 0;
+    margin: 0;
+}
+
+.task-card h3 {
+    font-size: 1rem;
+    color: #718096;
+}
+
+.task-card + .task-card {
+    margin-top: 1rem;
+}
+
+.task-card2 {
+    padding: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+.comment-card {
+    padding: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 5px 5px 10px #888888;
 }
