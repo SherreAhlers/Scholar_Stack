@@ -17,6 +17,14 @@
 <p>{{task.body}}</p>
 <p>{{task.date_created}}</p>
 
+{% for task_doc in task_docs %}
+<img class="responsive-img card-panel" src="{{task_doc.url}}">
+{% if task.author.user.id == user.id%}
+<a href="{% url 'task_doc_delete' task_doc.id %}">Delete Image</a>
+{% endif %}
+
+{% endfor %}
+
 <h3>Comments</h3>
 
 <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
@@ -26,6 +34,7 @@
     <input type="submit" class="btn" value="Create Comment">
 </form>
 
+{% if comments.count %}
 {% for comment in comments %}
 <p>{{comment.id}} This is comment.id</p>
 <p>{{comment.author}}</p>
@@ -36,7 +45,9 @@
 <a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
 {% endif %}
 {%endfor%}
-
+{% else %}
+<p>no comment</p>
+{% endif %}
 <br><br>
 {% if task.author.user.id == user.id%}
 <a href="{% url 'task_update' task.id %}">Edit Task</a>
