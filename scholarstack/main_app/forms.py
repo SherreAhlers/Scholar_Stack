@@ -5,13 +5,10 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Profile, Task, Comment
 
 
-
-
 class ProfileCreationForm(UserCreationForm):
     class Meta:
         model = Profile
         fields = ['status']
-
 
 
 # def clean_avatar(self):

@@ -133,7 +133,6 @@ input {
 .sign-info {
     padding-left: 20px;
     text-align: center;
-    background-color:#008080;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     position: relative;
@@ -161,6 +160,8 @@ input {
 .form-control {
     border: none;
 }
+
+
 span.helptext ul {
     display: flex;
     margin: 0;
