@@ -9,10 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import User, Profile, Profile_Avatar, Task, Comment
 from .forms import TaskForm, ProfileCreationForm, CommentForm
-<< << << < HEAD
 
-== == == =
->>>>>> > 70917f3c3cd110f4a1bd1d013edd16fff88fd1e2
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'scholarstack'
 
@@ -94,7 +91,9 @@ def task_detail(request, task_id, task_author_id):
     return render(request, 'task_detail.html', {'task': task, 'comments': comments, 'comment_form': comment_form})
 
 
+
 def create_comment(request, task_id, comment_author_id):
+    
     author = User.objects.get(id=comment_author_id)
     task = Task.objects.get(id=task_id)
     # task = Task.objects.get(task_id=task_id)

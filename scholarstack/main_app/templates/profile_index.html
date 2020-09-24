@@ -15,6 +15,7 @@
 <p>{{ profile.profile_avatar_set.all }}</p>
 <p>{{ user.profile }}</p>
 <!-- <img src="https://s3.us-east-2.amazonaws.com/scholarstack/9532b0.jpeg"> -->
+
 <form action="{% url 'edit_avatar' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
   {% csrf_token %}
   <input type="file" name="photo-file">
