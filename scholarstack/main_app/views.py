@@ -1,5 +1,6 @@
 import uuid
 import boto3
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -53,8 +54,8 @@ def about(request):
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
-    tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
-    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'tasks': tasks})
+    student_tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
+    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'student_tasks': student_tasks})
 
 
 def edit_avatar(request, profile_id):
@@ -62,17 +63,17 @@ def edit_avatar(request, profile_id):
     if photo_file:
         s3 = boto3.client('s3')
         # We need a unic key / but keep the file extention too
-        key = uuid.uuid4().hex[:6] + \
-            photo_file.name[photo_file.name.rfind('.'):]
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
         # just in case we get an errot
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        avatar = Profile_Avatar.objects.filter(profile_id=profile_id)
-        print(avatar.url, 'avatar.url------')
-        avatar.url = url
-        avatar.save()
-        # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
+        avatar, created = Profile_Avatar.objects.get_or_create(profile_id=profile_id, defaults={'url': 'https://i.imgur.com/qx38J6i.png'})
+        if created:
+            return redirect('profile_detail', profile_id=profile_id)
+        else:
+            avatar.url = url
+            avatar.save()
     except:
         print('An error occured uploading file to S3')
     return redirect('profile_detail', profile_id=profile_id)
@@ -88,7 +89,7 @@ def create_task(request, profile_id):
     return redirect('profile_detail', profile_id=profile_id)
 
 
-def task_detail(request, task_id, task_author_id):
+def task_detail(request, task_id):
     # task = Task.objects.get(id=task_id)
     task = Task.objects.get(id=task_id)
     comments = Comment.objects.filter(
@@ -108,7 +109,14 @@ def create_comment(request, task_id, comment_author_id):
         new_comment.author_id = comment_author_id
         new_comment.task_id = task_id
         new_comment.save()
-    return redirect('task_detail', task_id=task_id, task_author_id=task_author_id)
+    return redirect('task_detail', task_id=task_id)
+
+class CommentDelete(LoginRequiredMixin, DeleteView):
+    print("You are in CommentDelete View")
+    model = Comment
+    def get_success_url(self):
+        comment = self.get_object()
+        return reverse('task_detail', kwargs={'task_id': comment.task.id})
 
 
 def signup(request):
