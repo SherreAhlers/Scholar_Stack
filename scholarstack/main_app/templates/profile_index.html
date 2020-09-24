@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h1>This is the index for profile.</h1>
+<h1 class="profile-header">My Profile</h1>
 <p>{{ user.profile }}</p>
 <p>{{ profile.id }}</p>
 <p>{{ profile.status }}</p>
@@ -33,7 +33,7 @@
 {% for task in tasks %}
 <a href=""></a>
 <div>
-  <p>task is diplayed down bellow</p>
+  <p>All Tasks Are Displayed Below</p>
   <p>{{ task.author }}</p>
   <p>{{ task.title }}</p>
   <p>{{ task.field }}</p>

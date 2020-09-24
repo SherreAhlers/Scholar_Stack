@@ -7,10 +7,10 @@
         <div class="con">
             <header class="sign-info">
                 <h1>Sign Up</h1>
+                <div class="form-content">
+                    {% csrf_token %} {{ form.as_ul }}
+                </div>
             </header>
-            <div class="form-content">
-                {% csrf_token %} {{ form.as_ul }}
-            </div>
             <input type="submit" class="btn-signup btn-outline-primary" value="Sign Up">
         </div>
     </form>

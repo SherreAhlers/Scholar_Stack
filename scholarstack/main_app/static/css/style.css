@@ -1,19 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
 /* base */
+
 body {
     margin: 0;
+    padding: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     background-color:white;
     font-family: 'Kumbh Sans', sans-serif;
 }
+
 main {
     padding-top: 10px;
     flex-grow: 1;
     /* flex: 1 0 auto; */
 }
+
 footer.page-footer {
     padding-top: 0;
     text-align: right;
@@ -23,22 +28,29 @@ footer.page-footer {
     margin-left: auto;
     margin-right: auto;
 }
+
 ul {
     list-style: none;
     margin: 0;
     overflow: hidden;
     margin-bottom: 40px ;
+   
 }
+
 li {
     display: inline;
     padding: 20px;
 }
+
 li>a {
     color: #374785;
     font-weight: 900;
     font-size: 23px;
+    
 }
+
 /* about */
+
 .aboutus {
     text-align: center;
     font-family: 'Nunito', sans-serif;
@@ -51,10 +63,12 @@ li>a {
     border-radius: 10px;
     border: 2px solid #24305e;
 }
+
 .intropara {
     text-align: center;
     font-size: 27px;
 }
+
 /* login  */
 
 
@@ -71,6 +85,7 @@ li>a {
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border-radius: 20px;
 }
+
 .login-form::before {
     content: "";
     background-image: url('https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');
@@ -83,6 +98,7 @@ li>a {
     opacity: 0.3;
     border-radius: 20px;
 }
+
 .login-info {
     padding-left: 20px;
     text-align: center;
@@ -93,11 +109,14 @@ li>a {
     align-items: center;
     justify-content: center;
 }
+
 input {
     width: 100%;
     padding: 5px;
     resize: vertical;
+  
 }
+
 .btn {
     width: 45%;
     margin: auto;
@@ -111,69 +130,100 @@ input {
     font-size: 15px;
     text-align: center;
 }
+
 .btn:hover {
     color: #374785;
     background-color: #F76C6C;
     border: 2px solid #374785;
 }
+
 /* sign up */
+
 .sign-form {
+   padding-top: 20px;
+   color: #374785;
+   width: 100%;
+   margin: auto;
+   max-width: 505px;
+    min-height: 350px;
     position: relative;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    width: 100%;
-    padding-top: 35px;
+    justify-content: center;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border-radius: 20px;
-    box-shadow: 3px 3px 3px 3px rgba(36, 48, 94, 0.6);
-    color: #374785;
-    /* margin: 5em auto; */
-    max-width: 100%;
-  
 }
+
+.sign-form::before {
+    content: " ";
+    background-image: url('https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.sign-form .con {
+    z-index: 2;
+}
+
 .sign-info {
     padding-left: 20px;
     text-align: center;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: relative;
     color: #374785;
     font-size: 20px;
     line-height: 0.9;
-    align-items: center;
-    justify-content: center;
+  
 }
 
 .form-content {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
-    margin-left: 305px;
-    padding-top: 0;
-    margin-top: 0;
-    max-width: 100%;
+    max-width: 70%;
     color: #374785;
+    padding: 0;
+    font-size: 15px;
+    
 }
+
+
 .form-content li {
-    padding: 5px;
+    width: 100%;
+
 }
+
 .form-control {
     border: none;
 }
 
 
 span.helptext ul {
+    width: 100%;
     display: flex;
     margin: 0;
-    padding: 0;
     flex-direction: column;
     color: #374785;
+  
+    
 }
-span.helptext ul li {
-    padding-top: 0;
-    padding-bottom: 0;
 
+span.helptext ul li {
+    width: 80%;
+    line-height: 15px;  
+    padding-top: 10px;
+    padding-bottom: 10px; 
 }
+
 .btn-signup {
     width: 25%;
     margin-left: 40%;
@@ -184,8 +234,40 @@ span.helptext ul li {
     margin-bottom: 15px;
     font-size: 16px
 }
+
 .btn-signup:hover {
     background-color: rgba(248, 233, 161, .3);
     color: #24305E;
     border: 2px solid #374785;
+}
+
+
+/* home */
+
+.homepage {
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.homepage::before {
+    content: " ";
+    background-image: url('https://images.unsplash.com/photo-1550475476-44c382c5f2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.1;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+
+h1 {
+
 }
