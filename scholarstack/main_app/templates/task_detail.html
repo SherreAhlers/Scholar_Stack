@@ -31,7 +31,16 @@
 <p>{{comment.author}}</p>
 <p>{{comment.body}}</p>
 <p>{{comment.date_created}}</p>
-<a href="{% url 'comment_delete' comment.id %}">Delete</a>
-
+{% if comment.author.id == user.id%}
+<a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
+<a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
+{% endif %}
 {%endfor%}
+
+<br><br>
+{% if task.author.user.id == user.id%}
+<a href="{% url 'task_update' task.id %}">Edit Task</a>
+<a href="{% url 'task_delete' task.id %}">Homework Completed / Delete</a>
+{% endif %}
+
 {% endblock %}

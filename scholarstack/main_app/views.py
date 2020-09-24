@@ -55,7 +55,8 @@ def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
     student_tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
-    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'student_tasks': student_tasks})
+    tutor_tasks = Task.objects.all()
+    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'student_tasks': student_tasks, 'tutor_tasks': tutor_tasks})
 
 
 def edit_avatar(request, profile_id):
@@ -96,6 +97,20 @@ def task_detail(request, task_id):
         task_id=task_id).order_by('-date_created')
     comment_form = CommentForm()
     return render(request, 'task_detail.html', {'task': task, 'comments': comments, 'comment_form': comment_form})
+    
+class TaskUpdate(LoginRequiredMixin, UpdateView):
+    model = Task
+    fields = ['title', 'level', 'field', 'body']
+    def get_success_url(self):
+        task = self.get_object()
+        return reverse('task_detail', kwargs={'task_id': task.id})
+
+class TaskDelete(LoginRequiredMixin, DeleteView):
+    model = Task
+    def get_success_url(self):
+        task = self.get_object()
+        return reverse('profile_detail', kwargs={'profile_id': task.author.id})
+
 
 
 def create_comment(request, task_id, comment_author_id):
@@ -110,6 +125,13 @@ def create_comment(request, task_id, comment_author_id):
         new_comment.task_id = task_id
         new_comment.save()
     return redirect('task_detail', task_id=task_id)
+
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+    model = Comment
+    fields = ['body']
+    def get_success_url(self):
+        comment = self.get_object()
+        return reverse('task_detail', kwargs={'task_id': comment.task.id})
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
     print("You are in CommentDelete View")

@@ -30,12 +30,10 @@
   <br><br>
   <input type="submit" class="btn" value="Create Task">
 </form>
-{% endif %}
 <!-- <p>This user is a Tutor</p> -->
 {% for task in student_tasks %}
-<a href=""></a>
 <div>
-  <p>All Tasks Are Displayed Below</p>
+  <p>All Tasks for the student Are Displayed Below</p>
   <p>{{ task.author }}</p>
   <p>{{ task.title }}</p>
   <p>{{ task.field }}</p>
@@ -44,4 +42,21 @@
   <a href="{% url 'task_detail' task.id%}">See details</a>
 </div>
 {% endfor %}
+{% endif %}
+
+
+{% if profile.status == 'T'%}
+{% for task in tutor_tasks %}
+<div>
+  <p>All Tasks for the tutor Are Displayed Below</p>
+  <p>{{ task.author }}</p>
+  <p>{{ task.title }}</p>
+  <p>{{ task.field }}</p>
+  <p>{{ task.level }}</p>
+  <p>{{ task.body }}</p>
+  <a href="{% url 'task_detail' task.id%}">See details</a>
+</div>
+
+{% endfor %}
+{% endif %}
 {% endblock %}
