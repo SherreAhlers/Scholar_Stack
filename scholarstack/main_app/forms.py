@@ -4,11 +4,6 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 # from django.core.files.images import get_image_dimensions
 from .models import Profile, Task, Comment
 
-<< << << < HEAD
-== == == =
-
->>>>>> > 70917f3c3cd110f4a1bd1d013edd16fff88fd1e2
-
 
 class ProfileCreationForm(UserCreationForm):
     class Meta:
@@ -16,10 +11,6 @@ class ProfileCreationForm(UserCreationForm):
         fields = ['status']
 
 
-<< << << < HEAD
-
-== == == =
->>>>>> > 70917f3c3cd110f4a1bd1d013edd16fff88fd1e2
 # def clean_avatar(self):
 #     avatar = self.cleaned_data['avatar']
 #     try:

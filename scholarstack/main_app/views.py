@@ -9,10 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import User, Profile, Profile_Avatar, Task, Comment
 from .forms import TaskForm, ProfileCreationForm, CommentForm
-<< << << < HEAD
 
-== == == =
->>>>>> > 70917f3c3cd110f4a1bd1d013edd16fff88fd1e2
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'scholarstack'
 
