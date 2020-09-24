@@ -1,5 +1,6 @@
 import uuid
 import boto3
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -88,7 +89,7 @@ def create_task(request, profile_id):
     return redirect('profile_detail', profile_id=profile_id)
 
 
-def task_detail(request, task_id, task_author_id):
+def task_detail(request, task_id):
     # task = Task.objects.get(id=task_id)
     task = Task.objects.get(id=task_id)
     comments = Comment.objects.filter(
@@ -108,7 +109,14 @@ def create_comment(request, task_id, comment_author_id):
         new_comment.author_id = comment_author_id
         new_comment.task_id = task_id
         new_comment.save()
-    return redirect('task_detail', task_id=task_id, task_author_id=task_author_id)
+    return redirect('task_detail', task_id=task_id)
+
+class CommentDelete(LoginRequiredMixin, DeleteView):
+    print("You are in CommentDelete View")
+    model = Comment
+    def get_success_url(self):
+        comment = self.get_object()
+        return reverse('task_detail', kwargs={'task_id': comment.task.id})
 
 
 def signup(request):

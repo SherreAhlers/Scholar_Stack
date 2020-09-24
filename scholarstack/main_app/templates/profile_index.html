@@ -23,13 +23,15 @@
   <input type="submit" class="btn" value="Change Avatar">
 </form>
 {% if profile.status == 'S'%}
-<p>This user is a student</p>
+<!-- <p>This user is a student</p> -->
 <form action="{% url 'create_task' profile.id %}" method="POST" class="card-panel">
   {% csrf_token %}
   {{ task_form.as_p }}
   <br><br>
   <input type="submit" class="btn" value="Create Task">
 </form>
+{% endif %}
+<!-- <p>This user is a Tutor</p> -->
 {% for task in tasks %}
 <a href=""></a>
 <div>
@@ -39,10 +41,7 @@
   <p>{{ task.field }}</p>
   <p>{{ task.level }}</p>
   <p>{{ task.body }}</p>
-  <a href="{% url 'task_detail' task.id task.author.id %}">See details</a>
+  <a href="{% url 'task_detail' task.id %}">See details</a>
 </div>
 {% endfor %}
-{% elif profile.status == 'T'%}
-<p>This user is a Tutor</p>
-{% endif %}
 {% endblock %}

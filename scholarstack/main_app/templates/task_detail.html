@@ -27,8 +27,11 @@
 </form>
 
 {% for comment in comments %}
+<p>{{comment.id}} This is comment.id</p>
 <p>{{comment.author}}</p>
 <p>{{comment.body}}</p>
 <p>{{comment.date_created}}</p>
+<a href="{% url 'comment_delete' comment.id %}">Delete</a>
+
 {%endfor%}
 {% endblock %}
