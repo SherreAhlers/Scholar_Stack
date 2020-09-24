@@ -133,20 +133,17 @@ input {
 .sign-info {
     padding-left: 20px;
     text-align: center;
-    /* background-color:#008080;
+    background-color:#008080;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
- 
-   
-=======
     position: relative;
     color: #374785;
     font-size: 20px;
     line-height: 0.9;
     align-items: center;
     justify-content: center;
-
 }
+
 .form-content {
     display: flex;
     flex-direction: column;
