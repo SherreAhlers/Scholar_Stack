@@ -1,37 +1,42 @@
 {% extends 'base.html' %} {% block content %}
-<h1>you landed on task_detail.html</h1>
-<h3>Profile</h3>
-<p>{{user}}</p>
-<p>{{profile.status}}</p>
+<h1 class="tasks">Tasks</h1>
+<div class="card-panel teal-text center-align">Add Photo
+    <h3 class="class-detail">Profile
+    </h3>
+    <p style="text-align: center; font-size: 20px;">{{user}}</p>
+    <p>{{profile.status}}</p>
 
-{% if profile.profile_avatar %}
-<img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
-{% else %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endif %}
-<h3>Task</h3>
-<p>{{task.author.user}}</p>
-<p>{{task.title}}</p>
-<p>{{task.field}}</p>
-<p>{{task.level}}</p>
-<p>{{task.body}}</p>
-<p>{{task.date_created}}</p>
+    {% if profile.profile_avatar %}
+    <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
+    {% else %}
+    {% endif %}
+    <div class="task-card2">
+        <h3 class="class-detail">Task</h3>
+        <p>{{task.author.user}}</p>
+        <p>{{task.title}}</p>
+        <p>{{task.field}}</p>
+        <p>{{task.level}}</p>
+        <p>{{task.body}}</p>
+        <p>{{task.date_created}}</p>
+    </div>
 
-<h3>Comments</h3>
+    <h3 class="class-detail">Comments</h3>
 
-<form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <br><br>
-    <input type="submit" class="btn" value="Create Comment">
-</form>
+    <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <br><br>
+        <input type="submit" class="btn" value="Create Comment">
+    </form>
 
-{% for comment in comments %}
-<p>{{comment.id}} This is comment.id</p>
-<p>{{comment.author}}</p>
-<p>{{comment.body}}</p>
-<p>{{comment.date_created}}</p>
-<a href="{% url 'comment_delete' comment.id %}">Delete</a>
+    {% for comment in comments %}
+    <div class="comment-card">
+        <p style="text-align: center;">{{comment.id}}</p>
+        <p style="text-align: center;">{{comment.author}}</p>
+        <p style="text-align: center;">{{comment.body}}</p>
+        <p style="text-align: center;">{{comment.date_created}}</p>
+        <a class="delete-btn" href="{% url 'comment_delete' comment.id %}">Delete</a>
+    </div>
 
-{%endfor%}
-{% endblock %}
+    {%endfor%}
+    {% endblock %}
