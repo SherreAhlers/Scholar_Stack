@@ -4,7 +4,9 @@
         <div class="con">
             <header class="login-info">
                 <h1>Log In</h1>
-                {% csrf_token %} {{ form.as_p }}
+                <div class="form-content">
+                    {% csrf_token %} {{ form.as_p }}
+                </div>
                 <input type="submit" class="btn btn-outline-primary" value="Login">
                 <input type="hidden" name="next" value="{{ next }}">
             </header>

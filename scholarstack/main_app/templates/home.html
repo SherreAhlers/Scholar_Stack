@@ -1,7 +1,19 @@
-{% extends 'base.html' %} {% block content %}
+<main class="homepage">
+    {% extends 'base.html' %} {% block content %}
+    {% if user %}
+    <h3>{{ user.profile }}</h3>
+    <h3>{{ user.profile.status }}</h3>
+    {% endif %}
 
-<h1>Welcome to Scholar Stack!</h1>
-{% if user %}
-<h3>{{ user.profile }}</h3>
-<h3>{{ user.profile.status }}</h3>
-{% endif %} {% endblock %}
+
+    <h1>Scholar Stack</h1>
+    <p>We're Here To Help</p>
+
+
+    {% endblock %}
+
+</main>
+<footer class="home-footer">
+    {% block footer %} {% endblock %}
+    <div class="right">All Rights Reserved, &copy; 2020 Scholar Stack &nbsp;</div>
+</footer>
