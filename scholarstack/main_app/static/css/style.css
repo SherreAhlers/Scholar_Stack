@@ -269,5 +269,12 @@ span.helptext ul li {
 
 
 h1 {
+    font-size: 4em;
+    text-align: center;
 
+}
+
+p {
+    text-align: center;
+    font-size: 2em;
 }
