@@ -1,23 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
-
 /* base */
-
 body {
     margin: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: white;
+    background-color:white;
     font-family: 'Kumbh Sans', sans-serif;
 }
-
 main {
     padding-top: 10px;
     flex-grow: 1;
     /* flex: 1 0 auto; */
 }
-
 footer.page-footer {
     padding-top: 0;
     text-align: right;
@@ -27,28 +23,22 @@ footer.page-footer {
     margin-left: auto;
     margin-right: auto;
 }
-
 ul {
     list-style: none;
     margin: 0;
     overflow: hidden;
-    margin-bottom: 40px;
+    margin-bottom: 40px ;
 }
-
 li {
     display: inline;
     padding: 20px;
 }
-
 li>a {
     color: #374785;
     font-weight: 900;
     font-size: 23px;
 }
-
-
 /* about */
-
 .aboutus {
     text-align: center;
     font-family: 'Nunito', sans-serif;
@@ -61,13 +51,10 @@ li>a {
     border-radius: 10px;
     border: 2px solid #24305e;
 }
-
 .intropara {
     text-align: center;
     font-size: 27px;
 }
-
-
 /* login  */
 
 
@@ -84,7 +71,6 @@ li>a {
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border-radius: 20px;
 }
-
 .login-form::before {
     content: "";
     background-image: url('https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');
@@ -97,7 +83,6 @@ li>a {
     opacity: 0.3;
     border-radius: 20px;
 }
-
 .login-info {
     padding-left: 20px;
     text-align: center;
@@ -108,13 +93,11 @@ li>a {
     align-items: center;
     justify-content: center;
 }
-
 input {
     width: 100%;
     padding: 5px;
     resize: vertical;
 }
-
 .btn {
     width: 45%;
     margin: auto;
@@ -128,13 +111,11 @@ input {
     font-size: 15px;
     text-align: center;
 }
-
 .btn:hover {
     color: #374785;
     background-color: #F76C6C;
     border: 2px solid #374785;
 }
-
 /* sign up */
 .sign-form {
     position: relative;
@@ -149,7 +130,6 @@ input {
     max-width: 100%;
   
 }
-
 .sign-info {
     padding-left: 20px;
     text-align: center;
@@ -162,8 +142,7 @@ input {
     align-items: center;
     justify-content: center;
 
-} 
-
+}
 .form-content {
     display: flex;
     flex-direction: column;
@@ -175,14 +154,13 @@ input {
     max-width: 100%;
     color: #374785;
 }
-
 .form-content li {
     padding: 5px;
 }
-
 .form-control {
     border: none;
 }
+
 
 span.helptext ul {
     display: flex;
@@ -191,13 +169,11 @@ span.helptext ul {
     flex-direction: column;
     color: #374785;
 }
-
 span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
 
 }
-
 .btn-signup {
     width: 25%;
     margin-left: 40%;
@@ -208,7 +184,6 @@ span.helptext ul li {
     margin-bottom: 15px;
     font-size: 16px
 }
-
 .btn-signup:hover {
     background-color: rgba(248, 233, 161, .3);
     color: #24305E;

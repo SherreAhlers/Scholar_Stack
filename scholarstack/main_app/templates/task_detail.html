@@ -3,6 +3,7 @@
 <h3>Profile</h3>
 <p>{{user}}</p>
 <p>{{profile.status}}</p>
+
 {% if profile.profile_avatar %}
 <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
 {% else %}
@@ -15,13 +16,16 @@
 <p>{{task.level}}</p>
 <p>{{task.body}}</p>
 <p>{{task.date_created}}</p>
+
 <h3>Comments</h3>
+
 <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
     {% csrf_token %}
     {{ comment_form.as_p }}
     <br><br>
     <input type="submit" class="btn" value="Create Comment">
 </form>
+
 {% for comment in comments %}
 <p>{{comment.author}}</p>
 <p>{{comment.body}}</p>
