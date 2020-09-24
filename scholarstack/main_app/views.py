@@ -12,7 +12,6 @@ from .forms import TaskForm, ProfileCreationForm, CommentForm
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'scholarstack'
-
 # Create your views here.
 
 
@@ -27,18 +26,24 @@ def user_has_profile(request, profile):
 
 
 def home(request):
-    if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
-        # user_has_profile(request, request.user.profile):
-        # print('User is_authenticated and has a profile')
-        profile = Profile.objects.get(id=request.user.profile.id)
-        # avatar = Profile_Avatar.objects.get(profile_id=request.user.profile.id)
-        return redirect('profile_detail', profile_id=profile.id)
-    elif request.user.id == None:
-        # print('User without profile')
-        return redirect('login')
-    else:
-        # profile = Profile.objects.get(id=request.user.profile.id)
+    if request.user.id and not hasattr(request.user, 'profile'):
         return redirect('status_create')
+    else:
+        return render(request, 'home.html')
+
+# def home(request):
+#     if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
+#     # user_has_profile(request, request.user.profile):
+#         # print('User is_authenticated and has a profile')
+#         profile = Profile.objects.get(id=request.user.profile.id)
+#         # avatar = Profile_Avatar.objects.get(profile_id=request.user.profile.id)
+#         return redirect('profile_detail', profile_id=profile.id)
+#     elif request.user.id == None:
+#         # print('User without profile')
+#         return redirect('login')
+#     else:
+#         # profile = Profile.objects.get(id=request.user.profile.id)
+#         return redirect('status_create')
 
 
 def about(request):
@@ -63,13 +68,14 @@ def edit_avatar(request, profile_id):
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        avatar = Profile_Avatar.objects.get(profile_id=profile_id)
+        avatar = Profile_Avatar.objects.filter(profile_id=profile_id)
+        print(avatar.url, 'avatar.url------')
         avatar.url = url
         avatar.save()
         # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
     except:
         print('An error occured uploading file to S3')
-    return redirect('home')
+    return redirect('profile_detail', profile_id=profile_id)
 
 
 def create_task(request, profile_id):
@@ -91,9 +97,7 @@ def task_detail(request, task_id, task_author_id):
     return render(request, 'task_detail.html', {'task': task, 'comments': comments, 'comment_form': comment_form})
 
 
-
 def create_comment(request, task_id, comment_author_id):
-    
     author = User.objects.get(id=comment_author_id)
     task = Task.objects.get(id=task_id)
     # task = Task.objects.get(task_id=task_id)
@@ -114,7 +118,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('status_create')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
