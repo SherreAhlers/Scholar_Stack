@@ -62,17 +62,17 @@ def edit_avatar(request, profile_id):
     if photo_file:
         s3 = boto3.client('s3')
         # We need a unic key / but keep the file extention too
-        key = uuid.uuid4().hex[:6] + \
-            photo_file.name[photo_file.name.rfind('.'):]
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
         # just in case we get an errot
     try:
         s3.upload_fileobj(photo_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        avatar = Profile_Avatar.objects.filter(profile_id=profile_id)
-        print(avatar.url, 'avatar.url------')
-        avatar.url = url
-        avatar.save()
-        # Profile_Avatar.objects.get(profile_id=profile_id).update(url=url)
+        avatar, created = Profile_Avatar.objects.get_or_create(profile_id=profile_id, defaults={'url': 'https://i.imgur.com/qx38J6i.png'})
+        if created:
+            return redirect('profile_detail', profile_id=profile_id)
+        else:
+            avatar.url = url
+            avatar.save()
     except:
         print('An error occured uploading file to S3')
     return redirect('profile_detail', profile_id=profile_id)

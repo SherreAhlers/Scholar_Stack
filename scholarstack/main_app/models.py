@@ -42,7 +42,7 @@ class Profile(models.Model):
     #     instance.profile.save()
 
     def __str__(self):
-        return f"{self.user} is a {self.status}"
+        return f"{self.id}, {self.user} is a {self.status}"
 
     def get_absolute_url(self):
         return reverse('profile_detail', kwargs={'profile_id': self.id})
@@ -110,7 +110,7 @@ class Message(models.Model):
 class Profile_Avatar(models.Model):
     # <- need to set default
     url = models.CharField(
-        max_length=200, default='https://i.imgur.com/qx38J6i.png')
+        max_length=200)
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
