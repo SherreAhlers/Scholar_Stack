@@ -15,3 +15,9 @@ urlpatterns = [
     path('task_detail/<int:task_id>/<int:task_author_id>', views.task_detail, name='task_detail'),
     path('task_detail/<int:task_id>/create_comment/<int:comment_author_id>', views.create_comment, name='create_comment'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+
+
+

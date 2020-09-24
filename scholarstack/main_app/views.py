@@ -80,7 +80,9 @@ def task_detail(request, task_id, task_author_id):
     comment_form = CommentForm()
     return render(request, 'task_detail.html', {'task': task, 'comments':comments, 'comment_form': comment_form})
 
+
 def create_comment(request, task_id, comment_author_id):
+    
     author = User.objects.get(id=comment_author_id)
     task = Task.objects.get(id=task_id)
     # task = Task.objects.get(task_id=task_id)

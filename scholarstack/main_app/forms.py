@@ -8,7 +8,7 @@ class ProfileCreationForm(UserCreationForm):
     class Meta:
         model = Profile
         fields = ['status']
-
+    
     # def clean_avatar(self):
     #     avatar = self.cleaned_data['avatar']
     #     try:

@@ -7,14 +7,21 @@
 <p>{{ user.user_name }}</p>
 <p>{{ user.password }}</p>
 <p>{{ profile.profile_avatar.url }} this is the avatar url</p>
-{% if profile.profile_avatar %}
-<img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}"> {% else %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endif %}
-<p>{{ profile.profile_avatar_set.first }}</p>
+
+
+    {% if profile.profile_avatar %}
+      <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
+    
+    {% else %}
+      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endif %}
+
+
+<p>{{ profile.profile_avatar_set.first }}</p> 
 <p>{{ profile.profile_avatar_set.all }}</p>
 <p>{{ user.profile }}</p>
 <!-- <img src="https://s3.us-east-2.amazonaws.com/scholarstack/9532b0.jpeg"> -->
+
 <form action="{% url 'edit_avatar' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
     {% csrf_token %}
     <input type="file" name="photo-file">
@@ -24,21 +31,29 @@
 {% if profile.status == 'S'%}
 <p>This user is a student</p>
 <form action="{% url 'create_task' profile.id %}" method="POST" class="card-panel">
-    {% csrf_token %} {{ task_form.as_p }}
-    <br><br>
-    <input type="submit" class="btn" value="Create Task">
+  {% csrf_token %}
+  {{ task_form.as_p }}
+  <br><br>
+  <input type="submit" class="btn" value="Create Task">
 </form>
 {% for task in tasks %}
 <a href=""></a>
 <div>
-    <p>task is diplayed down bellow</p>
-    <p>{{ task.author }}</p>
-    <p>{{ task.title }}</p>
-    <p>{{ task.field }}</p>
-    <p>{{ task.level }}</p>
-    <p>{{ task.body }}</p>
-    <a href="{% url 'task_detail' task.id task.author.id %}">See details</a>
+  <p>task is diplayed down bellow</p>
+  <p>{{ task.author }}</p>
+  <p>{{ task.title }}</p>
+  <p>{{ task.field }}</p>
+  <p>{{ task.level }}</p>
+  <p>{{ task.body }}</p>  
+  <a href="{% url 'task_detail' task.id task.author.id %}">See details</a>
+
 </div>
-{% endfor %} {% elif profile.status == 'T'%}
+{% endfor %}  
+
+
+
+
+
+{% elif profile.status == 'T'%}
 <p>This user is a Tutor</p>
 {% endif %} {% endblock %}

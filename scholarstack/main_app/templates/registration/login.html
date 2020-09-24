@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-
 <div class="overlay">
     <form class="login-form" method="POST" action="{% url 'login' %}">
         <div class="con">
@@ -9,15 +8,10 @@
             {% csrf_token %} {{ form.as_p }}
             <input type="submit" class="btn btn-outline-primary" value="Login">
             <input type="hidden" name="next" value="{{ next }}">
-
         </div>
     </form>
 </div>
-
-
 {% endblock %}
-
 {% block footer %}
 <img src="https://i.imgur.com/L2k5RBN.png?1" class="footer-img" alt="garland banner of children" width="100%" />
-
 {% endblock %}
