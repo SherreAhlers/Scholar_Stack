@@ -54,8 +54,8 @@ def about(request):
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     task_form = TaskForm()
-    tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
-    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'tasks': tasks})
+    student_tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
+    return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'student_tasks': student_tasks})
 
 
 def edit_avatar(request, profile_id):

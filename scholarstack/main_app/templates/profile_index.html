@@ -32,7 +32,7 @@
 </form>
 {% endif %}
 <!-- <p>This user is a Tutor</p> -->
-{% for task in tasks %}
+{% for task in student_tasks %}
 <a href=""></a>
 <div>
   <p>task is diplayed down bellow</p>
@@ -41,7 +41,7 @@
   <p>{{ task.field }}</p>
   <p>{{ task.level }}</p>
   <p>{{ task.body }}</p>
-  <a href="{% url 'task_detail' task.id %}">See details</a>
+  <a href="{% url 'task_detail' task.id%}">See details</a>
 </div>
 {% endfor %}
 {% endblock %}
