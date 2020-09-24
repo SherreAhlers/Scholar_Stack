@@ -6,11 +6,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
+import django_heroku
 from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,11 +19,6 @@ SECRET_KEY = 'j+i166b43l14nc68$ajsd!u$u%kfwjgk6(s6g-f)4s05+h8=t5'
 DEBUG = True
 ALLOWED_HOSTS = []
 # Application definition
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
 INSTALLED_APPS = [
     'main_app',
     'django.contrib.admin',
@@ -36,14 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-<<<<<<< HEAD
 
 
 # AUTH_USER_MODEL = 'main_app.Profile'
 
-=======
-# AUTH_USER_MODEL = 'main_app.Profile'
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,11 +41,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
 ROOT_URLCONF = 'scholarstack.urls'
 TEMPLATES = [
     {
@@ -74,26 +57,18 @@ TEMPLATES = [
         },
     },
 ]
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
 WSGI_APPLICATION = 'scholarstack.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
+WSGI_APPLICATION = 'scholarstack.wsgi.application'
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'scholarstack',
     }
 }
-<<<<<<< HEAD
 
 
 
@@ -101,10 +76,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 
-=======
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
->>>>>>> 0d7a94ef7f27f8a3be6d32e9ba666cb9ef1d4b75
+# Password validation
+# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

@@ -56,6 +56,8 @@ li>a {
     font-size: 27px;
 }
 /* login  */
+
+
 .login-form {
     color: #374785;
     width: 100%;
@@ -116,23 +118,34 @@ input {
 }
 /* sign up */
 .sign-form {
+    position: relative;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding-top: 35px;
     border-radius: 20px;
     box-shadow: 3px 3px 3px 3px rgba(36, 48, 94, 0.6);
     color: #374785;
-    margin: 5em auto;
+    /* margin: 5em auto; */
     max-width: 100%;
+  
 }
 .sign-info {
     padding-left: 20px;
     text-align: center;
+    /* background-color:#008080;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+ 
+   
+=======
     position: relative;
     color: #374785;
     font-size: 20px;
     line-height: 0.9;
     align-items: center;
     justify-content: center;
+
 }
 .form-content {
     display: flex;
@@ -161,6 +174,7 @@ span.helptext ul {
 span.helptext ul li {
     padding-top: 0;
     padding-bottom: 0;
+
 }
 .btn-signup {
     width: 25%;

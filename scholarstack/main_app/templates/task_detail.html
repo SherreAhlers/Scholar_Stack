@@ -5,12 +5,10 @@
 <p>{{profile.status}}</p>
 
 {% if profile.profile_avatar %}
-      <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
-    
-    {% else %}
-      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endif %}
-
+<img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
+{% else %}
+<div class="card-panel teal-text center-align">No Photos Uploaded</div>
+{% endif %}
 <h3>Task</h3>
 <p>{{task.author.user}}</p>
 <p>{{task.title}}</p>
@@ -22,22 +20,15 @@
 <h3>Comments</h3>
 
 <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
-  {% csrf_token %}
-  {{ comment_form.as_p }}
-  <br><br>
-  <input type="submit" class="btn" value="Create Comment">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <br><br>
+    <input type="submit" class="btn" value="Create Comment">
 </form>
 
 {% for comment in comments %}
 <p>{{comment.author}}</p>
 <p>{{comment.body}}</p>
 <p>{{comment.date_created}}</p>
-
-
 {%endfor%}
-
-
-
-
-
 {% endblock %}
