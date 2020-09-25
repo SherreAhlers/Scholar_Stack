@@ -36,8 +36,11 @@
                 <div>
                     {% if user.is_authenticated and user.profile.id %}
                     <a href="{% url 'profile_detail' user.profile.id %}">
-                        <img title="{{ user.user_name }}" class="profile-avatar"
-                            src="{{ user.profile.profile_avatar.url }}" alt="{{user.user_name}}" />
+                        {% if profile.profile_avatar %}
+        <img class="profile-avatar" src="{{profile.profile_avatar.url}}">
+        {% else %}
+        <img class="profile-avatar" src="https://i.imgur.com/qx38J6i.png">
+        {% endif %}
                     </a>
                     {% endif %}
                 </div>
