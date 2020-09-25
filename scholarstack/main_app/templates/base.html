@@ -1,21 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scholar Stack</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" text="text/css" href="{% static 'css/style.css' %}">
+    {% block styles %}
+    {% endblock %}
 </head>
+
 <body>
     <header class="navbar-fixed">
-        <nav>
+        <nav class="top-nav">
             <div class="nav-wrapper">
                 <ul class="right">
                     <li>
-                        <a href="/" class="left brand-logo"> <img src="https://i.imgur.com/hfqKFCt.png?1" alt="Simply Easy Learning" width="65px" height="70px"></a>
+                        <a href="/" class="left brand-logo"> <img src="https://i.imgur.com/eW1lXHc.png?1"
+                                alt="Simply Easy Learning" width="65px" height="60px"></a>
                     </li>
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
@@ -27,6 +33,14 @@
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                 </ul>
+                <div>
+                    {% if user.is_authenticated and user.profile.id %}
+                    <a href="{% url 'profile_detail' user.profile.id %}">
+                        <img title="{{ user.user_name }}" class="profile-avatar"
+                            src="{{ user.profile.profile_avatar.url }}" alt="{{user.user_name}}" />
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
     </header>
@@ -38,4 +52,5 @@
         <div class="right">All Rights Reserved, &copy; 2020 Scholar Stack &nbsp;</div>
     </footer>
 </body>
+
 </html>
