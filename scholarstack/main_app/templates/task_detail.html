@@ -1,30 +1,22 @@
 {% extends 'base.html' %} {% block content %}
-<h1 class="tasks">Tasks</h1>
-
-
-<h3 class="class-detail">Profile
-</h3>
-<p style="text-align: center; font-size: 20px;">{{user}}</p>
-<p>{{profile.status}}</p>
 
 {% if profile.profile_avatar %}
 <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
 {% else %}
 {% endif %}
 <div class="task-card2">
-    <h1>Task</h1>
-    <h2>{{task.author.user}}</h2>
-    <h2>{{task.title}}</h2>
-    <h2>{{task.field}}</h2>
-    <h2>{{task.level}}</h2>
-    <h2>{{task.body}}</h2>
-    <h2>{{task.date_created}}</h2>
+    <h3>{{task.title}}</h3>
+    <small class="task-author-small">Homework posted by {{task.author.user}} - {{task.date_created}}</small>
+    <br><br>
+    <p>{{task.field}} - {{task.get_level_display}}</p>
+    <p>{{task.body}}</p>
+    <small></small>
 </div>
 
 {% for task_doc in task_docs %}
 <img class="responsive-img card-panel" src="{{task_doc.url}}">
 {% if task.author.user.id == user.id%}
-<a href="{% url 'task_doc_delete' task_doc.id %}">Delete Image</a>
+<a class="edit-delete-task-pic-comment-a" href="{% url 'task_doc_delete' task_doc.id %}">Delete Image</a>
 {% endif %}
 
 {% endfor %}
@@ -39,26 +31,26 @@
 {% if comments.count %}
 {% for comment in comments %}
 <div class="comment-card">
-    <p style="text-align: center;">{{comment.author}}</p>
-    <p style="text-align: center;">{{comment.body}}</p>
-    <p style="text-align: center;">{{comment.date_created}}</p>
-
+    <h4 class="comment-author" >{{comment.author}}</h4>
+    <small>{{comment.date_created}}</small>
+    <br><br>
+    <p>{{comment.body}}</p>
 
     {% if comment.author.id == user.id%}
-    <a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
-    <a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
+    <a class="edit-delete-task-pic-comment-a" href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
+    <a class="edit-delete-task-pic-comment-a" href="{% url 'comment_update' comment.id %}">Edit Comment</a>
     {% endif %}
 
 </div>
 
 {%endfor%}
 {% else %}
-<p>no comment</p>
+<p>No comments for this homework yet</p>
 {% endif %}
 <br><br>
 {% if task.author.user.id == user.id%}
-<a href="{% url 'task_update' task.id %}">Edit Task</a>
-<a href="{% url 'task_delete' task.id %}">Homework Completed / Delete</a>
+<a class="edit-delete-task-pic-comment-a" href="{% url 'task_update' task.id %}">Edit Homework</a>
+<a class="edit-delete-task-pic-comment-a" href="{% url 'task_delete' task.id %}">Homework Completed / Delete</a>
 {% endif %}
 
 {% endblock %}

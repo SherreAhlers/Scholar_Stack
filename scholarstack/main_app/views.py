@@ -60,7 +60,7 @@ def profile_detail(request, profile_id):
     task_form = TaskForm()
     task_doc_form = Task_DocForm()
     student_tasks = Task.objects.filter(author=profile_id).order_by('-date_created')
-    tutor_tasks = Task.objects.all()
+    tutor_tasks = Task.objects.all().order_by('-date_created')
     return render(request, 'profile_index.html', {'profile': profile, 'task_form': task_form, 'task_doc_form': task_doc_form, 'student_tasks': student_tasks, 'tutor_tasks': tutor_tasks})
 
 

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1 class="profile-header">My Profile</h1>
+<h1 class="profile-header">My Scholar Space</h1>
 
 <div class="profile-index">
   <div class="profile">
@@ -16,7 +16,7 @@
         <input type="file" name="photo-file" />
       </div>
       <h3 style="font-size: 20px;margin:0;padding:0;text-align:center;">{{ profile.user }}</h3>
-      <p style="text-align:center;padding:0;margin:0;color:#aaa;">{{ profile.status}}</p>
+      <p style="text-align:center;padding:0;margin:0;color:#aaa;">{{ profile.get_status_display}}</p>
       <input type="submit" class="change-btn btn-primary" value="Change Avatar">
     </form>
   </div>
@@ -25,43 +25,43 @@
 <hr />
 
 {% if profile.status == 'S'%}
-<form action="{% url 'create_task' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+<label for="task-creation-form"><h3>Get some help with your new homework</h3></label>
+<form action="{% url 'create_task' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel" id="task-creation-form">
   {% csrf_token %}
   {{ task_form.as_p }}
-  <input type="file" name="task_doc">
+  <input type="file" id="files" class="hidden" name="task_doc"/>
+  <label class="btn" for="files">Upload an picture</label>
   <br><br>
-  <input type="submit" class="btn" value="Create Task">
+  <input type="submit" class="btn" value="Post">
 </form>
 
-{% endif %}
+
 </div>
 
-<p class="tasks">All Tasks Are Displayed Below</p>
+<h3 class="tasks">My Homework</h3>
 {% for task in student_tasks %}
 
+<a id="anchor-to-task-detail" href="{% url 'task_detail' task.id%}">
 <div class="task-card">
-
-  <h1>{{ task.title }}</h1>
-  <h3>{{ task.field }}</h3>
-  <h3>{{ task.level }}</h3>
-  <h3>{{ task.body }}</h3>
-  <a href="{% url 'task_detail' task.id%}">See details</a>
+  <h3>{{ task.title }}</h3>
+  <p>{{ task.field }} - {{ task.get_level_display }}</p>
+  <p>{{ task.body|slice:":100" }}...</p>
 </div>
+</a>
 {% endfor %}
-
+{% endif %}  <!-- Keep this endif  -->
 
 
 {% if profile.status == 'T'%}
 {% for task in tutor_tasks %}
 
+<a id="anchor-to-task-detail" href="{% url 'task_detail' task.id%}">
 <div class="task-card">
-  <h1>{{ task.author.user.username }}</h1>
-  <h3>{{ task.field }}</h3>
-  <h3>{{ task.level }}</h3>
-  <h3>{{ task.body }}</h3>
-  <a href="{% url 'task_detail' task.id%}">See details</a>
-
+  <h3>{{ task.author.user.username }}</h3>
+  <p>{{ task.field }} - {{ task.get_level_display }}</p>
+  <p>{{ task.body|slice:":100" }}...</p>
 </div>
+</a>
 
 {% endfor %}
 {% endif %}

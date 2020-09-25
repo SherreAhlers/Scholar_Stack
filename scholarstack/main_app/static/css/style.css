@@ -382,11 +382,16 @@ span.helptext ul li {
     color: slategray;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .tasks {
     text-align: center;
-    padding-top: 15px;
+    /* padding-top: 15px; */
+    padding: 4rem 0 3rem 0;
     font-weight: 900;
-    font-size: 30px;
+    /* font-size: 30px; */
 }
 
 .card-panel {
@@ -416,9 +421,10 @@ span.helptext ul li {
     width: 50%;
     margin-left: 25%;
     background-color: #b0d5e7;
+    text-decoration: none;
 }
 
-.task-card h1 {
+.task-card h3 {
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.5;
@@ -428,9 +434,13 @@ span.helptext ul li {
     margin: 0;
 }
 
-.task-card h3 {
+.task-card p {
     font-size: 1rem;
     color: #718096;
+}
+
+#anchor-to-task-detail {
+    text-decoration: none;
 }
 
 .task-card + .task-card {
@@ -444,19 +454,22 @@ span.helptext ul li {
     box-shadow: 5px 5px 10px #888888;
     width: 50%;
     margin-left: 25%;
+    margin-bottom: 5rem;
 }
-.task-card2 h1 {
-    font-size: 1.5rem;
+.task-card2 h3 {
     font-weight: 800;
     line-height: 1.5;
     letter-spacing: 0.025;
     color: #1a1a1a;
     padding: 0;
-    margin: 0;
+    margin: 0 0 -10px 0;
 }
 
-.task-card2 h2 {
-    font-size: 1.2rem;
+.task-author-small {
+    color: #718096;
+}
+
+.task-card2 p {
     color: #718096;
 }
 
@@ -467,7 +480,14 @@ span.helptext ul li {
     background-color: #b0d5e7;
     width: 50%;
     margin-left: 24%;
+}
 
+.comment-author {
+    margin-bottom: -7px;
+}
+
+.edit-delete-task-pic-comment-a {
+padding-right: 3rem;
 }
 
 .comment-edit {
