@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     background-color:white;
     font-family: 'Kumbh Sans', sans-serif;
+    background-color: whitesmoke;
 }
 
 header.navbar-fixed {
@@ -219,7 +220,7 @@ input {
 
 .form-content li {
     width: 100%;
-
+    
 }
 
 .form-control {
@@ -233,7 +234,7 @@ span.helptext ul {
     margin: 0;
     flex-direction: column;
     color: #374785;
-  
+    
     
 }
 
@@ -373,7 +374,7 @@ span.helptext ul li {
     border: 1px solid grey;
     color: slategray;
     border-radius: 3px;
-
+    
 }
 
 .change-btn:hover {
@@ -414,6 +415,7 @@ span.helptext ul li {
     align-items: center;
     width: 50%;
     margin-left: 25%;
+    background-color: #b0d5e7;
 }
 
 .task-card h1 {
@@ -433,9 +435,11 @@ span.helptext ul li {
 
 .task-card + .task-card {
     margin-top: 1rem;
+    
 }
 
 .task-card2 {
+    background-color: #b0d5e7;
     margin-top: 1rem;
     box-shadow: 5px 5px 10px #888888;
     width: 50%;
@@ -460,6 +464,10 @@ span.helptext ul li {
     padding: 0.5rem;
     margin-top: 1rem;
     box-shadow: 5px 5px 10px #888888;
+    background-color: #b0d5e7;
+    width: 50%;
+    margin-left: 24%;
+
 }
 
 .comment-edit {
@@ -470,6 +478,7 @@ span.helptext ul li {
     margin-left: 25%;
     display: flex;
     flex-direction: column;
+    background-color: #b0d5e7;
 }
 
 .comment-edit > * + * {
@@ -491,6 +500,7 @@ span.helptext ul li {
 .comment-edit form {
     display: flex;
     flex-direction: column;
+
 }
 
 .comment-edit form > * + * {
