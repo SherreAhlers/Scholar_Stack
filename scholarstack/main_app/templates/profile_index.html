@@ -12,7 +12,7 @@
         {% if profile.profile_avatar %}
         <img class="avatar-img responsive-img card-panel" src="{{profile.profile_avatar.url}}">
         {% else %}
-        <div class="avatar-img card-panel teal-text center-align">No Photos Uploaded</div>
+        <img class="avatar-img responsive-img card-panel" src="https://i.imgur.com/qx38J6i.png">
         {% endif %}
         <input type="file" name="photo-file" />
       </div>
@@ -69,6 +69,7 @@
 {% endif %}
 {% endblock %}
 
+{% endblock %}
 {% block footer %}
 <img src="https://i.imgur.com/L2k5RBN.png?1" class="footer-img" alt="garland banner of children" width="100%" />
 {% endblock %}
