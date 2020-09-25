@@ -20,23 +20,43 @@
         <p>{{task.date_created}}</p>
     </div>
 
-    <h3 class="class-detail">Comments</h3>
+{% for task_doc in task_docs %}
+<img class="responsive-img card-panel" src="{{task_doc.url}}">
+{% if task.author.user.id == user.id%}
+<a href="{% url 'task_doc_delete' task_doc.id %}">Delete Image</a>
+{% endif %}
 
+{% endfor %}
+
+<h3>Comments</h3>
     <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
         {% csrf_token %}
         {{ comment_form.as_p }}
         <br><br>
         <input type="submit" class="btn" value="Create Comment">
     </form>
+{% if comments.count %}
+{% for comment in comments %}
+<div class="comment-card">
+    <p style="text-align: center;">{{comment.author}}</p>
+    <p style="text-align: center;">{{comment.body}}</p>
+    <p style="text-align: center;">{{comment.date_created}}</p>
+    <a class="delete-btn" href="{% url 'comment_delete' comment.id %}">Delete</a>
+  {% if comment.author.id == user.id%}
+<a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
+<a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
+{% endif %}
+</div>
 
-    {% for comment in comments %}
-    <div class="comment-card">
-        <p style="text-align: center;">{{comment.id}}</p>
-        <p style="text-align: center;">{{comment.author}}</p>
-        <p style="text-align: center;">{{comment.body}}</p>
-        <p style="text-align: center;">{{comment.date_created}}</p>
-        <a class="delete-btn" href="{% url 'comment_delete' comment.id %}">Delete</a>
-    </div>
+{%endfor%}
+{% else %}
+<p>no comment</p>
+{% endif %}
+<br><br>
+{% if task.author.user.id == user.id%}
+<a href="{% url 'task_update' task.id %}">Edit Task</a>
+<a href="{% url 'task_delete' task.id %}">Homework Completed / Delete</a>
+{% endif %}
 
-    {%endfor%}
-    {% endblock %}
+{% endblock %}
+

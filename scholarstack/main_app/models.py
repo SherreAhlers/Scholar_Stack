@@ -124,6 +124,8 @@ class Task_Doc(models.Model):
     def __str__(self):
         return f"This is the photo for task_id: {self.task_id} @{self.url}"
 
+    def get_absolute_url(self):
+        return reverse('task_detail', kwargs={'task_id': self.task_id})
 
 class Comment_Doc(models.Model):
     url = models.CharField(max_length=200)
