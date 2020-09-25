@@ -1,24 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 <h1 class="tasks">Tasks</h1>
-<div class="card-panel teal-text center-align">Add Photo
-    <h3 class="class-detail">Profile
-    </h3>
-    <p style="text-align: center; font-size: 20px;">{{user}}</p>
-    <p>{{profile.status}}</p>
 
-    {% if profile.profile_avatar %}
-    <img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
-    {% else %}
-    {% endif %}
-    <div class="task-card2">
-        <h3 class="class-detail">Task</h3>
-        <p>{{task.author.user}}</p>
-        <p>{{task.title}}</p>
-        <p>{{task.field}}</p>
-        <p>{{task.level}}</p>
-        <p>{{task.body}}</p>
-        <p>{{task.date_created}}</p>
-    </div>
+<h3 class="class-detail">Profile
+</h3>
+<p style="text-align: center; font-size: 20px;">{{user}}</p>
+<p>{{profile.status}}</p>
+
+{% if profile.profile_avatar %}
+<img class="responsive-img card-panel" src="{{profile.profile_avatar.url}}">
+{% else %}
+{% endif %}
+<div class="task-card2">
+    <h1>Task</h1>
+    <h2>{{task.author.user}}</h2>
+    <h2>{{task.title}}</h2>
+    <h2>{{task.field}}</h2>
+    <h2>{{task.level}}</h2>
+    <h2>{{task.body}}</h2>
+    <h2>{{task.date_created}}</h2>
+</div>
 
 {% for task_doc in task_docs %}
 <img class="responsive-img card-panel" src="{{task_doc.url}}">
@@ -28,24 +28,24 @@
 
 {% endfor %}
 
-<h3>Comments</h3>
-    <form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <br><br>
-        <input type="submit" class="btn" value="Create Comment">
-    </form>
+<h3 style="text-align: center; margin-top: 15px;">Comments</h3>
+<form action="{% url 'create_comment' task.id user.id %}" method="POST" class="card-panel">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <br><br>
+    <input type="submit" class="btn" value="Create Comment">
+</form>
 {% if comments.count %}
 {% for comment in comments %}
 <div class="comment-card">
     <p style="text-align: center;">{{comment.author}}</p>
     <p style="text-align: center;">{{comment.body}}</p>
     <p style="text-align: center;">{{comment.date_created}}</p>
-    <a class="delete-btn" href="{% url 'comment_delete' comment.id %}">Delete</a>
-  {% if comment.author.id == user.id%}
-<a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
-<a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
-{% endif %}
+
+    {% if comment.author.id == user.id%}
+    <a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
+    <a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
+    {% endif %}
 </div>
 
 {%endfor%}
@@ -59,4 +59,3 @@
 {% endif %}
 
 {% endblock %}
-
