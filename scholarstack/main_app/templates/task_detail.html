@@ -5,7 +5,6 @@
 {% else %}
 {% endif %}
 <div class="task-card2">
-    <!-- <h1></h1> -->
     <h3>{{task.title}}</h3>
     <small class="task-author-small">Homework posted by {{task.author.user}} - {{task.date_created}}</small>
     <br><br>
@@ -36,8 +35,6 @@
     <small>{{comment.date_created}}</small>
     <br><br>
     <p>{{comment.body}}</p>
-    <!-- <p style="text-align: center;">{{comment.date_created}}</p> -->
-
 
     {% if comment.author.id == user.id%}
     <a class="edit-delete-task-pic-comment-a" href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
