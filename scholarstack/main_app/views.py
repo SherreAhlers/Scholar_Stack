@@ -17,12 +17,9 @@ BUCKET = 'scholarstack'
 
 
 def user_has_profile(request, profile):
-    # print('hitting user.profile', len(profile.status))
     if profile.status:
-        # print("status is not empty")
         return True
     else:
-        # print("status is empty")
         return False
 
 
@@ -31,21 +28,6 @@ def home(request):
         return redirect('status_create')
     else:
         return render(request, 'home.html')
-
-# def home(request):
-#     if hasattr(request.user, 'profile') and user_has_profile(request, request.user.profile):
-#     # user_has_profile(request, request.user.profile):
-#         # print('User is_authenticated and has a profile')
-#         profile = Profile.objects.get(id=request.user.profile.id)
-#         # avatar = Profile_Avatar.objects.get(profile_id=request.user.profile.id)
-#         return redirect('profile_detail', profile_id=profile.id)
-#     elif request.user.id == None:
-#         # print('User without profile')
-#         return redirect('login')
-#     else:
-#         # profile = Profile.objects.get(id=request.user.profile.id)
-#         return redirect('status_create')
-
 
 def about(request):
     return render(request, 'about.html')
@@ -65,15 +47,11 @@ def add_task_photo(request, task_id):
         print('An error occured uploading file to S3')
     else:
         pass
-    # return redirect('profile_detail', profile_id=profile_id)
-
-
 
 def task_doc_delete(request, task_doc_id):
     task_doc = Task_Doc.objects.get(id=task_doc_id)
     task_id = task_doc.task.id
     task_doc.delete()
-    print('we are hitting the task_doc_delete')
     return redirect('task_detail', task_id=task_id)
 
 
@@ -111,7 +89,6 @@ def create_task(request, profile_id):
     form = TaskForm(request.POST)
     if form.is_valid():
         new_task = form.save(commit=False)
-        # new_task.author = profile_id
         new_task.author_id = profile_id
         new_task.save()
     task = Task.objects.latest('date_created')
@@ -120,7 +97,6 @@ def create_task(request, profile_id):
 
 
 def task_detail(request, task_id):
-    # task = Task.objects.get(id=task_id)
     task = Task.objects.get(id=task_id)
     task_docs = Task_Doc.objects.filter(task_id=task_id)
     comments = Comment.objects.filter(
@@ -142,10 +118,7 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
         return reverse('profile_detail', kwargs={'profile_id': task.author.id})
 
 def create_comment(request, task_id, comment_author_id):
-    author = User.objects.get(id=comment_author_id)
     task = Task.objects.get(id=task_id)
-    # task = Task.objects.get(task_id=task_id)
-    task_author_id = task.author_id
     form = CommentForm(request.POST)
     if form.is_valid():
         new_comment = form.save(commit=False)
@@ -162,7 +135,6 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
         return reverse('task_detail', kwargs={'task_id': comment.task.id})
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
-    print("You are in CommentDelete View")
     model = Comment
     def get_success_url(self):
         comment = self.get_object()
@@ -182,20 +154,11 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
-# def status_create(request, profile_id):
-#     form = ProfileCreationForm(request.POST)
-#     if form.is_valid():
-#         new_profile_status = form.save(commit=False)
-#         new_profile_status.profile_id = profile_id
-#         new_profile_status.save()
-#     return redirect('profile_detail', profile_id=profile_id)
-
 
 class ProfileCreationForm(CreateView):
     model = Profile
     fields = ['status']
 
     def form_valid(self, form):
-        # print(self.request.user.id, '<- this is self.request.user.id')
         form.instance.user = self.request.user
         return super().form_valid(form)

@@ -31,15 +31,6 @@ class Profile(models.Model):
         max_length=1,
         choices=STATUS
     )
-    # Add Avatar here or in a seperate model????----
-    # avatar = models.ImageField(default)
-    # @receiver(post_save, sender=User)
-    # def create_user_profile(sender, instance, created, **kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(sender, instance, **kwargs):
-    #     instance.profile.save()
 
     def __str__(self):
         return f"{self.id}, {self.user} is a {self.status}"
@@ -60,7 +51,6 @@ class Task(models.Model):
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
 
-    # doc = ?? How to implement the pictures
     def __str__(self):
         return f'''
     Task_id: {self.id},
@@ -77,7 +67,6 @@ class Comment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
-    # doc = ?? How to implement the pictures
 
     def __str__(self):
         return f'''
@@ -95,7 +84,6 @@ class Message(models.Model):
         User, on_delete=models.CASCADE, related_name="reciever")
     body = models.CharField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
-    # doc = ?? How to implement the pictures
 
     def __str__(self):
         return f'''
@@ -108,7 +96,6 @@ class Message(models.Model):
 
 
 class Profile_Avatar(models.Model):
-    # <- need to set default
     url = models.CharField(
         max_length=200)
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)

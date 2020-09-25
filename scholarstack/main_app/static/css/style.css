@@ -39,7 +39,6 @@ nav .nav-wrapper img.profile-avatar {
 main {
     padding-top: 10px;
     flex-grow: 1;
-    /* flex: 1 0 auto; */
 }
 
 footer.page-footer {
@@ -379,7 +378,7 @@ span.helptext ul li {
 }
 
 .change-btn:hover {
-    background-color: whitesmoke; /* Green */
+    background-color: whitesmoke;
     color: slategray;
 }
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h1 class="tasks">Tasks</h1>
 
+
 <h3 class="class-detail">Profile
 </h3>
 <p style="text-align: center; font-size: 20px;">{{user}}</p>
@@ -42,10 +43,12 @@
     <p style="text-align: center;">{{comment.body}}</p>
     <p style="text-align: center;">{{comment.date_created}}</p>
 
+
     {% if comment.author.id == user.id%}
     <a href="{% url 'comment_delete' comment.id %}">Delete Comment</a>
     <a href="{% url 'comment_update' comment.id %}">Edit Comment</a>
     {% endif %}
+
 </div>
 
 {%endfor%}
