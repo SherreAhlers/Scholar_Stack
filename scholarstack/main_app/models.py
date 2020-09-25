@@ -48,7 +48,7 @@ class Task(models.Model):
         choices=LEVELS,
         default=LEVELS[0][0]
     )
-    body = models.CharField(max_length=2000)
+    body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -65,7 +65,7 @@ class Task(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    body = models.CharField(max_length=2000)
+    body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
